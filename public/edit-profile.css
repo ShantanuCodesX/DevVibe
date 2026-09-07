@@ -1,0 +1,646 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #0f172a;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.edit-navbar {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 60px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+.brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+
+.edit-navbar a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #475569;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+
+.edit-navbar a:hover {
+    color: #2563eb;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.edit-container {
+    width: 100%;
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 50px 25px 80px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.edit-header {
+    margin-bottom: 30px;
+}
+
+
+.edit-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+
+    color: #0f172a;
+
+    margin-bottom: 8px;
+
+    letter-spacing: -0.5px;
+}
+
+
+.edit-header p {
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* =========================
+   FORM SECTION
+========================= */
+
+.form-section {
+    padding: 26px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+
+.form-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #0f172a;
+
+    margin-bottom: 22px;
+
+    padding-bottom: 14px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #334155;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    color: #0f172a;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #94a3b8;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+.form-group textarea {
+    min-height: 110px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   DISABLED INPUT
+========================= */
+
+.form-group input:disabled {
+    background: #f1f5f9;
+
+    color: #64748b;
+
+    opacity: 1;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   SMALL HELP TEXT
+========================= */
+
+.form-group small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.profile-picture-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+/* =========================
+   CURRENT IMAGE
+========================= */
+
+.current-image,
+.current-placeholder {
+    width: 105px;
+    height: 105px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+
+.current-image {
+    object-fit: cover;
+
+    border: 3px solid #e2e8f0;
+
+    background: #f1f5f9;
+}
+
+
+.current-placeholder {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    border: 3px solid #dbeafe;
+}
+
+
+/* =========================
+   IMAGE UPLOAD
+========================= */
+
+.upload-area {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.upload-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    padding: 10px 15px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+
+.upload-btn:hover {
+    border-color: #2563eb;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+
+.small-text {
+    margin-top: 8px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-input {
+    line-height: 1.5;
+}
+
+
+/* =========================
+   ACTIONS
+========================= */
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding-top: 5px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.cancel-btn,
+.save-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.cancel-btn {
+    border: 1px solid #cbd5e1;
+
+    color: #334155;
+
+    background: #ffffff;
+}
+
+
+.cancel-btn:hover {
+    background: #f8fafc;
+
+    border-color: #94a3b8;
+}
+
+
+.save-btn {
+    border: 1px solid #2563eb;
+
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+
+.save-btn:hover {
+    background: #1d4ed8;
+
+    border-color: #1d4ed8;
+}
+
+
+.cancel-btn:active,
+.save-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    /* NAVBAR */
+
+    .edit-navbar {
+        height: 62px;
+
+        padding: 0 18px;
+    }
+
+
+    .brand {
+        font-size: 21px;
+    }
+
+
+    .edit-navbar a {
+        font-size: 13px;
+    }
+
+
+    /* CONTAINER */
+
+    .edit-container {
+        width: 100%;
+
+        padding: 30px 15px 60px;
+    }
+
+
+    /* HEADER */
+
+    .edit-header {
+        margin-bottom: 24px;
+    }
+
+
+    .edit-header h1 {
+        font-size: 26px;
+    }
+
+
+    .edit-header p {
+        font-size: 14px;
+    }
+
+
+    /* FORM */
+
+    .edit-form {
+        gap: 16px;
+    }
+
+
+    /* SECTION */
+
+    .form-section {
+        padding: 20px 16px;
+
+        border-radius: 10px;
+    }
+
+
+    .form-section h2 {
+        font-size: 17px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* PROFILE IMAGE */
+
+    .profile-picture-area {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 16px;
+    }
+
+
+    .current-image,
+    .current-placeholder {
+        width: 90px;
+        height: 90px;
+    }
+
+
+    .current-placeholder {
+        font-size: 32px;
+    }
+
+
+    /* INPUT */
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+
+        font-size: 14px;
+    }
+
+
+    /* ACTIONS */
+
+    .form-actions {
+        flex-direction: column-reverse;
+
+        width: 100%;
+
+        gap: 10px;
+    }
+
+
+    .cancel-btn,
+    .save-btn {
+        width: 100%;
+
+        min-height: 45px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+    .edit-navbar {
+        padding: 0 14px;
+    }
+
+
+    .brand {
+        font-size: 20px;
+    }
+
+
+    .edit-navbar a {
+        font-size: 12px;
+    }
+
+
+    .edit-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .form-section {
+        padding: 18px 14px;
+    }
+
+
+    .edit-header h1 {
+        font-size: 24px;
+    }
+}

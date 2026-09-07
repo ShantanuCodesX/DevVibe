@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title><%= user.name %> - Devvibe</title>
+
+    <link
+        rel="stylesheet"
+        href="/userprofile.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="userprofile-navbar">
+
+        <div class="brand">
+            Devvibe
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         PROFILE
+    ========================== -->
+
+    <main class="userprofile-container">
+
+
+        <!-- PROFILE HEADER -->
+
+        <section class="userprofile-header">
+
+
+            <!-- Profile Image -->
+
+            <div class="profile-image-container">
+
+                <% if (user.profileImage) { %>
+
+                    <img
+                        src="<%= user.profileImage %>"
+                        alt="<%= user.name %>"
+                        class="profile-image"
+                    >
+
+                <% } else { %>
+
+                    <div class="profile-placeholder">
+
+                        <%= (user.name || "U").charAt(0).toUpperCase() %>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+
+
+
+            <!-- Profile Information -->
+
+            <div class="profile-info">
+
+                <h1>
+                    <%= user.name %>
+                </h1>
+
+
+                <% if (user.headline) { %>
+
+                    <h2>
+                        <%= user.headline %>
+                    </h2>
+
+                <% } else { %>
+
+                    <h2>
+                        Full Stack Developer
+                    </h2>
+
+                <% } %>
+
+
+
+                <!-- Bio -->
+
+                <% if (user.bio) { %>
+
+                    <p class="bio">
+                        <%= user.bio %>
+                    </p>
+
+                <% } %>
+
+
+
+                <!-- Social Links -->
+
+                <div class="social-links">
+
+                    <% if (user.github) { %>
+
+                        <a
+                            href="<%= user.github %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GitHub
+                        </a>
+
+                    <% } %>
+
+
+                    <% if (user.linkedin) { %>
+
+                        <a
+                            href="<%= user.linkedin %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            LinkedIn
+                        </a>
+
+                    <% } %>
+
+
+                    <% if (user.instagram) { %>
+
+                        <a
+                            href="<%= user.instagram %>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Instagram
+                        </a>
+
+                    <% } %>
+
+                </div>
+
+
+
+                <!-- Skills -->
+
+                <% if (user.skills && user.skills.length > 0) { %>
+
+                    <div class="skills">
+
+                        <% user.skills.forEach(skill => { %>
+
+                            <span>
+                                <%= skill %>
+                            </span>
+
+                        <% }) %>
+
+                    </div>
+
+                    <div class="user-resume-action">
+                        <a href="/profile/user/<%= user._id %>/resume" class="view-resume-btn">View Resume</a>
+                    </div>
+
+                <% } %>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROOF OF WORK
+        ========================== -->
+
+        <section class="proof-section">
+
+
+            <div class="section-title">
+
+                <h2>
+                    Proof of Work
+                </h2>
+
+                <p>
+                    Projects I've built and shipped.
+                </p>
+
+            </div>
+
+
+
+            <% if (!projects || projects.length === 0) { %>
+
+
+                <div class="no-projects">
+
+                    <h3>
+                        No projects yet
+                    </h3>
+
+                    <p>
+                        Projects will appear here when they are added.
+                    </p>
+
+                </div>
+
+
+            <% } else { %>
+
+
+                <div class="proof-projects">
+
+
+                    <% projects.forEach(project => { %>
+
+
+                        <article class="proof-project-card">
+
+
+                            <!-- PROJECT SCREENSHOTS -->
+
+                            <% if (
+                                project.screenshots &&
+                                project.screenshots.length > 0
+                            ) { %>
+
+
+                                <div class="proof-images">
+
+
+                                    <% project.screenshots.forEach(image => { %>
+
+
+                                        <img
+                                            src="<%= image %>"
+                                            alt="<%= project.name %> screenshot"
+                                            class="proof-image"
+                                        >
+
+
+                                    <% }) %>
+
+
+                                </div>
+
+
+                            <% } %>
+
+
+
+                            <!-- PROJECT CONTENT -->
+
+                            <div class="proof-content">
+
+
+                                <h3>
+                                    <%= project.name %>
+                                </h3>
+
+
+                                <% if (project.description) { %>
+
+                                    <p>
+                                        <%= project.description %>
+                                    </p>
+
+                                <% } %>
+
+
+
+                                <!-- TECH STACK -->
+
+                                <% if (
+                                    project.techStack &&
+                                    project.techStack.length > 0
+                                ) { %>
+
+
+                                    <div class="proof-tech">
+
+
+                                        <% project.techStack.forEach(tech => { %>
+
+
+                                            <span>
+                                                <%= tech %>
+                                            </span>
+
+
+                                        <% }) %>
+
+
+                                    </div>
+
+
+                                <% } %>
+
+
+
+                                <!-- PROJECT LINKS -->
+
+                                <div class="proof-links">
+
+
+                                    <% if (project.liveLink) { %>
+
+                                        <a
+                                            href="<%= project.liveLink %>"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="live-btn"
+                                        >
+                                            Live App ↗
+                                        </a>
+
+                                    <% } %>
+
+
+
+                                    <% if (project.sourceCode) { %>
+
+                                        <a
+                                            href="<%= project.sourceCode %>"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="source-btn"
+                                        >
+                                            Source Code
+                                        </a>
+
+                                    <% } %>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </article>
+
+
+                    <% }) %>
+
+
+                </div>
+
+
+            <% } %>
+
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #111827;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.search-navbar {
+    height: 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.search-brand {
+    color: #2563eb;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.back-btn {
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back-btn:hover {
+    color: #2563eb;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.search-container {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 55px 25px 80px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.search-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.search-header p {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+
+/* =========================
+   SEARCH FORM
+========================= */
+
+.search-form {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto 45px;
+
+    display: flex;
+    gap: 10px;
+}
+
+.search-form input {
+    flex: 1;
+
+    height: 50px;
+
+    padding: 0 16px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.search-form input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-form button {
+    height: 50px;
+
+    padding: 0 25px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   RESULT HEADING
+========================= */
+
+.result-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.result-heading h2 {
+    font-size: 20px;
+}
+
+.result-heading span {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* =========================
+   USERS GRID
+========================= */
+
+.users-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================
+   USER CARD
+========================= */
+
+.user-card {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.user-card:hover {
+    border-color: #bfdbfe;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.07);
+}
+
+
+/* =========================
+   USER TOP
+========================= */
+
+.user-top {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 18px;
+}
+
+.user-image,
+.user-placeholder {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+.user-image {
+    object-fit: cover;
+}
+
+.user-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.user-info {
+    min-width: 0;
+}
+
+.user-info h3 {
+    font-size: 17px;
+    margin-bottom: 5px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-info p {
+    color: #6b7280;
+    font-size: 14px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 20px;
+}
+
+.skills span {
+    background: #eff6ff;
+
+    color: #2563eb;
+
+    padding: 6px 9px;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   VIEW PROFILE
+========================= */
+
+.view-profile-btn {
+    display: block;
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 11px;
+
+    border: 1px solid #2563eb;
+    border-radius: 7px;
+
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.view-profile-btn:hover {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+
+/* =========================
+   EMPTY STATES
+========================= */
+
+.search-empty,
+.no-results {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    padding: 55px 25px;
+}
+
+.search-empty-icon,
+.no-results-icon {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.search-empty h2,
+.no-results h2 {
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+.search-empty p,
+.no-results p {
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .search-navbar {
+        height: 60px;
+
+        padding: 0 18px;
+    }
+
+    .search-brand {
+        font-size: 21px;
+    }
+
+    .back-btn {
+        font-size: 13px;
+    }
+
+    .search-container {
+        padding:
+            35px 15px 50px;
+    }
+
+    .search-header {
+        margin-bottom: 22px;
+    }
+
+    .search-header h1 {
+        font-size: 26px;
+    }
+
+    .search-header p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .search-form {
+        flex-direction: column;
+
+        margin-bottom: 30px;
+    }
+
+    .search-form input,
+    .search-form button {
+        width: 100%;
+    }
+
+    .result-heading {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 6px;
+    }
+
+    .result-heading h2 {
+        font-size: 18px;
+    }
+
+    .users-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .user-card {
+        padding: 18px;
+    }
+
+}

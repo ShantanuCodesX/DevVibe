@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Add Project - Devvibe</title>
+
+    <link
+        rel="stylesheet"
+        href="/add-project.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="project-navbar">
+
+        <div class="brand">
+            Devvibe
+        </div>
+
+        <a href="/projects" class="back-link">
+            ← Back to Projects
+        </a>
+
+    </nav>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="project-container">
+
+        <div class="page-heading">
+
+            <h1>Add New Project</h1>
+
+            <p>
+                Add a project to showcase your work.
+            </p>
+
+        </div>
+
+
+        <!-- ================= FORM ================= -->
+
+        <form
+            action="/projects/add"
+            method="POST"
+            enctype="multipart/form-data"
+            class="project-form"
+        >
+
+            <!-- Project Name -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Project Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="e.g. Devhub"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Description -->
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    placeholder="Briefly describe what your project does..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- Tech Stack -->
+
+            <div class="form-group">
+
+                <label for="techStack">
+                    Tech Stack
+                </label>
+
+                <input
+                    type="text"
+                    id="techStack"
+                    name="techStack"
+                    placeholder="Node.js, Express, MongoDB"
+                >
+
+                <small>
+                    Separate technologies with commas.
+                </small>
+
+            </div>
+
+
+            <!-- Live Link -->
+
+            <div class="form-group">
+
+                <label for="liveLink">
+                    Live App Link
+                </label>
+
+                <input
+                    type="url"
+                    id="liveLink"
+                    name="liveLink"
+                    placeholder="https://myproject.com"
+                >
+
+            </div>
+
+
+            <!-- Source Code -->
+
+            <div class="form-group">
+
+                <label for="sourceCode">
+                    Source Code
+                </label>
+
+                <input
+                    type="url"
+                    id="sourceCode"
+                    name="sourceCode"
+                    placeholder="https://github.com/username/project"
+                >
+
+            </div>
+
+
+            <!-- Screenshot -->
+
+            <div class="form-group">
+
+                <label for="screenshot">
+                    Project Screenshot
+                </label>
+
+                <input
+                    type="file"
+                    id="screenshot"
+                    name="screenshots"
+                    accept="image/png,image/jpeg,image/webp"
+                >
+
+                <small>
+                    Upload one image only. Maximum size: 5MB.
+                </small>
+
+            </div>
+
+
+            <!-- Actions -->
+
+            <div class="form-actions">
+
+                <a
+                    href="/projects"
+                    class="cancel-btn"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+                    Add Project
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>

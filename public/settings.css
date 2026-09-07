@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #111827;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.settings-navbar {
+
+    height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 38px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.settings-brand {
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    color: #2563eb;
+}
+
+
+.settings-navbar a {
+
+    color: #4b5563;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+
+.settings-navbar a:hover {
+
+    color: #2563eb;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.settings-container {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 55px 25px;
+}
+
+
+.settings-header {
+
+    margin-bottom: 30px;
+}
+
+
+.settings-header h1 {
+
+    font-size: 34px;
+
+    margin-bottom: 8px;
+}
+
+
+.settings-header p {
+
+    color: #6b7280;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   SETTINGS CARD
+========================= */
+
+.settings-card {
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.05);
+
+    overflow: hidden;
+}
+
+
+.setting-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 28px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.setting-item:last-child {
+
+    border-bottom: none;
+}
+
+
+.setting-item h3 {
+
+    font-size: 18px;
+
+    margin-bottom: 6px;
+}
+
+
+.setting-item p {
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.view-profile-btn,
+.logout-btn {
+
+    flex-shrink: 0;
+
+    padding: 11px 17px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.view-profile-btn {
+
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+
+.view-profile-btn:hover {
+
+    background: #1d4ed8;
+}
+
+
+.logout-btn {
+
+    border: 1px solid #fca5a5;
+
+    color: #dc2626;
+
+    background: #ffffff;
+}
+
+
+.logout-btn:hover {
+
+    background: #fef2f2;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .settings-navbar {
+
+        padding: 0 20px;
+
+        height: 70px;
+    }
+
+
+    .settings-brand {
+
+        font-size: 23px;
+    }
+
+
+    .settings-container {
+
+        padding: 40px 20px;
+    }
+
+
+    .setting-item {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 18px;
+
+        padding: 22px;
+    }
+
+
+    .view-profile-btn,
+    .logout-btn {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+}

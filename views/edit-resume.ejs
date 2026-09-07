@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Resume - Devvibe</title>
+
+    <link rel="stylesheet" href="/edit-resume.css">
+</head>
+
+<body>
+
+<nav class="resume-navbar">
+    <div class="brand">Devvibe</div>
+
+    <a href="/profile">
+        Back to Profile
+    </a>
+</nav>
+
+<main class="resume-container">
+
+    <div class="resume-heading">
+        <h1>Edit Resume</h1>
+        <p>Create an ATS-friendly developer resume.</p>
+    </div>
+
+    <form action="/resume/edit" method="POST" class="resume-form">
+
+        <!-- BASIC INFORMATION -->
+
+        <section class="resume-section">
+
+            <h2>Professional Information</h2>
+
+            <div class="form-group">
+                <label>Professional Title</label>
+
+                <input
+                    type="text"
+                    name="title"
+                    value="<%= resume?.title || user.headline || 'Full Stack Developer' %>"
+                    placeholder="Full Stack Developer"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label>Location</label>
+
+                <input
+                    type="text"
+                    name="location"
+                    value="<%= resume?.location || '' %>"
+                    placeholder="India"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label>Phone</label>
+
+                <input
+                    type="text"
+                    name="phone"
+                    value="<%= resume?.phone || '' %>"
+                    placeholder="+91 XXXXX XXXXX"
+                >
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="resume-section">
+
+            <h2>Professional Summary</h2>
+
+            <div class="form-group">
+
+                <textarea
+                    name="summary"
+                    rows="6"
+                    placeholder="Write a short professional summary..."
+                ><%= resume?.summary || user.bio || '' %></textarea>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPERIENCE -->
+
+        <section class="resume-section">
+
+            <h2>Experience</h2>
+
+            <div class="form-group">
+
+                <label>Job Title</label>
+
+                <input
+                    type="text"
+                    name="experienceTitle"
+                    value="<%= resume?.experienceTitle || '' %>"
+                    placeholder="Software Developer"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Company</label>
+
+                <input
+                    type="text"
+                    name="company"
+                    value="<%= resume?.company || '' %>"
+                    placeholder="Company Name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Experience Description</label>
+
+                <textarea
+                    name="experienceDescription"
+                    rows="6"
+                    placeholder="Describe your responsibilities and achievements..."
+                ><%= resume?.experienceDescription || '' %></textarea>
+
+            </div>
+
+        </section>
+
+
+        <!-- EDUCATION -->
+
+        <section class="resume-section">
+
+            <h2>Education</h2>
+
+            <div class="form-group">
+
+                <label>Degree</label>
+
+                <input
+                    type="text"
+                    name="degree"
+                    value="<%= resume?.degree || '' %>"
+                    placeholder="B.Tech Computer Science"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>College / University</label>
+
+                <input
+                    type="text"
+                    name="college"
+                    value="<%= resume?.college || '' %>"
+                    placeholder="University Name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Graduation Year</label>
+
+                <input
+                    type="text"
+                    name="graduationYear"
+                    value="<%= resume?.graduationYear || '' %>"
+                    placeholder="2026"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- ADDITIONAL SKILLS -->
+
+        <section class="resume-section">
+
+            <h2>Additional Skills</h2>
+
+            <div class="form-group">
+
+                <input
+                    type="text"
+                    name="additionalSkills"
+                    value="<%= resume?.additionalSkills || '' %>"
+                    placeholder="Git, Docker, AWS, REST API"
+                >
+
+                <small>
+                    Separate skills with commas.
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACTIONS -->
+
+        <div class="resume-actions">
+
+            <a
+                href="/profile"
+                class="cancel-btn"
+            >
+                Cancel
+            </a>
+
+
+            <button
+                type="submit"
+                class="preview-btn"
+            >
+                Save & Preview Resume
+            </button>
+
+        </div>
+
+    </form>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings - Devhub</title>
+
+    <link
+        rel="stylesheet"
+        href="/settings.css"
+    >
+
+</head>
+
+<body>
+
+    <nav class="settings-navbar">
+
+        <div class="settings-brand">
+            Devhub
+        </div>
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+    </nav>
+
+
+    <main class="settings-container">
+
+        <div class="settings-header">
+
+            <h1>
+                Settings
+            </h1>
+
+            <p>
+                Manage your profile and account.
+            </p>
+
+        </div>
+
+
+        <section class="settings-card">
+
+            <div class="setting-item">
+
+                <div>
+
+                    <h3>
+                        Public Profile
+                    </h3>
+
+                    <p>
+                        View how your developer profile appears to others.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/profile/user/<%= user._id %>"
+                    class="view-profile-btn"
+                >
+                    View Public Profile
+                </a>
+
+            </div>
+
+
+            <div class="setting-item logout-item">
+
+                <div>
+
+                    <h3>
+                        Logout
+                    </h3>
+
+                    <p>
+                        Sign out from your Devhub account.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="/auth/logout"
+                    class="logout-btn"
+                >
+                    Logout
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

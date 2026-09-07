@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Resume Preview - <%= user.name %></title>
+
+    <link
+        rel="stylesheet"
+        href="/preview-resume.css"
+    >
+
+</head>
+
+
+<body>
+
+<% if (!pdfMode) { %>
+
+<div class="preview-toolbar">
+
+    <a href="/resume/edit">
+        ← Edit Resume
+    </a>
+
+    <a href="/resume/download">Download PDF</a>
+
+</div>
+<% } %>
+
+<main class="resume-paper">
+
+
+    <!-- HEADER -->
+
+    <header class="resume-header">
+
+        <h1>
+            <%= user.name %>
+        </h1>
+
+
+        <h2>
+            <%= resume?.title || user.headline || "Full Stack Developer" %>
+        </h2>
+
+
+        <div class="contact-info">
+
+            <span>
+                <%= user.email %>
+            </span>
+
+
+            <% if (resume?.phone) { %>
+
+                <span>
+                    <%= resume.phone %>
+                </span>
+
+            <% } %>
+
+
+            <% if (resume?.location) { %>
+
+                <span>
+                    <%= resume.location %>
+                </span>
+
+            <% } %>
+
+        </div>
+
+
+        <div class="resume-links">
+
+            <% if (user.github) { %>
+
+                <a href="<%= user.github %>">
+                    GitHub
+                </a>
+
+            <% } %>
+
+
+            <% if (user.linkedin) { %>
+
+                <a href="<%= user.linkedin %>">
+                    LinkedIn
+                </a>
+
+            <% } %>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- SUMMARY -->
+
+    <% if (resume?.summary || user.bio) { %>
+
+        <section>
+
+            <h3>
+                PROFESSIONAL SUMMARY
+            </h3>
+
+            <p>
+                <%= resume?.summary || user.bio %>
+            </p>
+
+        </section>
+
+    <% } %>
+
+
+
+    <!-- SKILLS -->
+
+    <% if (user.skills && user.skills.length > 0) { %>
+
+        <section>
+
+            <h3>
+                TECHNICAL SKILLS
+            </h3>
+
+            <p>
+                <%= user.skills.join(" • ") %>
+
+                <% if (resume?.additionalSkills) { %>
+                    • <%= resume.additionalSkills %>
+                <% } %>
+            </p>
+
+        </section>
+
+    <% } %>
+
+
+
+    <!-- PROJECTS -->
+
+    <% if (projects && projects.length > 0) { %>
+
+        <section>
+
+            <h3>
+                PROJECTS
+            </h3>
+
+
+            <% projects.forEach(project => { %>
+
+                <div class="resume-project">
+
+                    <div class="project-title">
+
+                        <strong>
+                            <%= project.name %>
+                        </strong>
+
+                        <% if (project.liveLink) { %>
+
+                            <a href="<%= project.liveLink %>">
+                                Live Demo
+                            </a>
+
+                        <% } %>
+
+                        <% if (project.sourceCode) { %>
+
+                            <a href="<%= project.sourceCode %>">
+                                Source
+                            </a>
+
+                        <% } %>
+
+                    </div>
+
+
+                    <p>
+                        <%= project.description %>
+                    </p>
+
+
+                    <% if (
+                        project.techStack &&
+                        project.techStack.length
+                    ) { %>
+
+                        <p class="project-tech">
+
+                            <strong>Technologies:</strong>
+
+                            <%= project.techStack.join(", ") %>
+
+                        </p>
+
+                    <% } %>
+
+                </div>
+
+            <% }) %>
+
+        </section>
+
+    <% } %>
+
+
+
+    <!-- EXPERIENCE -->
+
+    <% if (
+        resume?.experienceTitle ||
+        resume?.company ||
+        resume?.experienceDescription
+    ) { %>
+
+        <section>
+
+            <h3>
+                EXPERIENCE
+            </h3>
+
+
+            <div class="experience">
+
+                <strong>
+                    <%= resume.experienceTitle %>
+                </strong>
+
+
+                <% if (resume.company) { %>
+
+                    <span>
+                        — <%= resume.company %>
+                    </span>
+
+                <% } %>
+
+
+                <p>
+                    <%= resume.experienceDescription %>
+                </p>
+
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+
+    <!-- EDUCATION -->
+
+    <% if (
+        resume?.degree ||
+        resume?.college ||
+        resume?.graduationYear
+    ) { %>
+
+        <section>
+
+            <h3>
+                EDUCATION
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    <%= resume.degree %>
+                </strong>
+
+                <% if (resume.college) { %>
+
+                    — <%= resume.college %>
+
+                <% } %>
+
+
+                <% if (resume.graduationYear) { %>
+
+                    | <%= resume.graduationYear %>
+
+                <% } %>
+
+            </p>
+
+        </section>
+
+    <% } %>
+
+
+</main>
+
+
+</body>
+
+</html>

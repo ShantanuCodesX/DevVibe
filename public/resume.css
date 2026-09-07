@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f8fafc;
+
+    color: #111827;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.resume-navbar {
+
+    height: 72px;
+
+    padding: 0 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.resume-navbar .brand {
+
+    color: #2563eb;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.resume-navbar > a:last-child {
+
+    color: #4b5563;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+
+.resume-navbar > a:last-child:hover {
+
+    color: #2563eb;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.resume-container {
+
+    width: min(1050px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 55px 0;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.resume-page-header {
+
+    margin-bottom: 30px;
+}
+
+
+.resume-page-header h1 {
+
+    font-size: 36px;
+
+    margin-bottom: 8px;
+}
+
+
+.resume-page-header p {
+
+    color: #64748b;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   MANAGER CARD
+========================= */
+
+.resume-actions-card {
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+
+.action-info {
+
+    max-width: 570px;
+}
+
+
+.action-info h2 {
+
+    font-size: 23px;
+
+    margin-bottom: 8px;
+}
+
+
+.action-info p {
+
+    color: #64748b;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.resume-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    justify-content: flex-end;
+}
+
+
+.resume-buttons a {
+
+    padding: 11px 15px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+.primary-btn {
+
+    background: #2563eb;
+
+    color: #ffffff;
+}
+
+
+.primary-btn:hover {
+
+    background: #1d4ed8;
+}
+
+
+.secondary-btn {
+
+    background: #ffffff;
+
+    color: #111827;
+
+    border: 1px solid #d1d5db;
+}
+
+
+.secondary-btn:hover {
+
+    background: #f3f4f6;
+}
+
+
+.download-btn {
+
+    background: #1d4ed8;
+
+    color: #ffffff;
+}
+
+
+.download-btn:hover {
+
+    background: #1f2937;
+}
+
+
+/* =========================
+   ATS CARD
+========================= */
+
+.ats-card {
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    display: flex;
+
+    gap: 18px;
+
+    align-items: flex-start;
+
+    background: #eff6ff;
+
+    border: 1px solid #bfdbfe;
+
+    border-radius: 12px;
+}
+
+
+.ats-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+
+.ats-card h2 {
+
+    font-size: 18px;
+
+    margin-bottom: 6px;
+}
+
+
+.ats-card p {
+
+    color: #475569;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   STRUCTURE
+========================= */
+
+.resume-structure {
+
+    margin-top: 45px;
+}
+
+
+.resume-structure > h2 {
+
+    font-size: 23px;
+
+    margin-bottom: 18px;
+}
+
+
+.structure-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+.structure-item {
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+}
+
+
+.structure-item strong {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 15px;
+}
+
+
+.structure-item span {
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   DANGER ZONE
+========================= */
+
+.danger-zone {
+
+    margin-top: 45px;
+
+    padding: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 10px;
+}
+
+
+.danger-zone h3 {
+
+    color: #b91c1c;
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
+}
+
+
+.danger-zone p {
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.delete-btn {
+
+    padding: 10px 15px;
+
+    border: 1px solid #fca5a5;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #dc2626;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+
+.delete-btn:hover {
+
+    background: #fef2f2;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .resume-navbar {
+
+        padding: 0 20px;
+    }
+
+
+    .resume-container {
+
+        width: calc(100% - 30px);
+
+        padding: 35px 0;
+    }
+
+
+    .resume-actions-card {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .resume-buttons {
+
+        justify-content: flex-start;
+    }
+
+
+    .structure-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .danger-zone {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .resume-page-header h1 {
+
+        font-size: 30px;
+    }
+
+
+    .resume-buttons {
+
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+
+    .resume-buttons a {
+
+        text-align: center;
+
+        width: 100%;
+    }
+
+}

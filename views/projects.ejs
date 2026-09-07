@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Projects - Devvibe</title>
+
+    <link
+        rel="stylesheet" href="/projects.css" >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="project-navbar">
+
+        <div class="brand">
+            Devvibe
+        </div>
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+    </nav>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="project-container">
+
+
+        <!-- ================= PAGE HEADING ================= -->
+
+        <div class="page-heading project-heading">
+
+            <div>
+
+                <h1>
+                    Project Manager
+                </h1>
+
+                <p>
+                    Manage your proof of work.
+                </p>
+
+            </div>
+
+
+            <a
+                href="/projects/add"
+                class="add-project-btn"
+            >
+                + Add New Project
+            </a>
+
+        </div>
+
+
+        <!-- ================= EMPTY STATE ================= -->
+
+        <% if (projects.length === 0) { %>
+
+            <div class="empty-projects">
+
+                <div class="empty-icon">
+                    +
+                </div>
+
+                <h2>
+                    No projects yet
+                </h2>
+
+                <p>
+                    Add your first project to showcase your work.
+                </p>
+
+                <a
+                    href="/projects/add"
+                    class="add-project-btn"
+                >
+                    Add Project
+                </a>
+
+            </div>
+
+        <% } %>
+
+
+        <!-- ================= PROJECT LIST ================= -->
+
+        <div class="project-list">
+
+
+            <% projects.forEach(project => { %>
+
+
+                <article class="project-card">
+
+
+                    <!-- Project Content -->
+
+                    <div class="project-details">
+
+
+                        <div class="project-title-row">
+
+                            <h2>
+                                <%= project.name %>
+                            </h2>
+
+                        </div>
+
+
+                        <p class="project-description">
+                            <%= project.description %>
+                        </p>
+
+
+                        <!-- Tech Stack -->
+
+                        <% if (project.techStack && project.techStack.length > 0) { %>
+
+                            <div class="tech-list">
+
+                                <% project.techStack.forEach(tech => { %>
+
+                                    <span>
+                                        <%= tech %>
+                                    </span>
+
+                                <% }) %>
+
+                            </div>
+
+                        <% } %>
+
+
+                        <!-- Project Links -->
+
+                        <div class="project-links">
+
+
+                            <% if (project.liveLink) { %>
+
+                                <a
+                                    href="<%= project.liveLink %>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Live App ↗
+                                </a>
+
+                            <% } %>
+
+
+                            <% if (project.sourceCode) { %>
+
+                                <a
+                                    href="<%= project.sourceCode %>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Source Code ↗
+                                </a>
+
+                            <% } %>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Actions -->
+
+                    <div class="project-actions">
+
+
+                        <a
+                            href="/projects/edit/<%= project._id %>"
+                            class="edit-btn"
+                        >
+                            Edit
+                        </a>
+
+
+                        <form
+                            action="/projects/delete/<%= project._id %>"
+                            method="POST"
+                        >
+
+                            <button
+                                type="submit"
+                                class="delete-btn"
+                            >
+                                Delete
+                            </button>
+
+                        </form>
+
+
+                    </div>
+
+
+                </article>
+
+
+            <% }) %>
+
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

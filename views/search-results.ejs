@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Search Developers - Devhub</title>
+
+    <link
+        rel="stylesheet"
+        href="/search-results.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="search-navbar">
+
+        <a
+            href="/dashboard"
+            class="search-brand"
+        >
+            Devhub
+        </a>
+
+        <a
+            href="/dashboard"
+            class="back-btn"
+        >
+            ← Dashboard
+        </a>
+
+    </nav>
+
+
+    <!-- Main -->
+
+    <main class="search-container">
+
+        <div class="search-header">
+
+            <h1>Find Developers</h1>
+
+            <p>
+                Search developers by name, heading or skills.
+            </p>
+
+        </div>
+
+
+        <!-- Search Form -->
+
+        <form
+            action="/profile/search"
+            method="GET"
+            class="search-form"
+        >
+
+            <input
+                type="search"
+                name="q"
+                value="<%= query %>"
+                placeholder="Search by name, heading or skill..."
+                autocomplete="off"
+            >
+
+            <button type="submit">
+                Search
+            </button>
+
+        </form>
+
+
+        <!-- Search Result -->
+
+        <% if (query && query.trim()) { %>
+
+            <div class="result-heading">
+
+                <h2>
+                    Search results for
+                    "<%= query %>"
+                </h2>
+
+                <span>
+                    <%= users.length %> developer(s) found
+                </span>
+
+            </div>
+
+
+            <% if (users.length === 0) { %>
+
+                <div class="no-results">
+
+                    <div class="no-results-icon">
+                        🔍
+                    </div>
+
+                    <h2>No developers found</h2>
+
+                    <p>
+                        Try searching with a different name,
+                        heading or skill.
+                    </p>
+
+                </div>
+
+            <% } else { %>
+
+                <div class="users-grid">
+
+                    <% users.forEach(person => { %>
+
+                        <article class="user-card">
+
+                            <!-- User -->
+
+                            <div class="user-top">
+
+                                <% if (person.profileImage) { %>
+
+                                    <img
+                                        src="<%= person.profileImage %>"
+                                        alt="<%= person.name %>"
+                                        class="user-image"
+                                    >
+
+                                <% } else { %>
+
+                                    <div class="user-placeholder">
+                                        <%= person.name
+                                            .charAt(0)
+                                            .toUpperCase() %>
+                                    </div>
+
+                                <% } %>
+
+
+                                <div class="user-info">
+
+                                    <h3>
+                                        <%= person.name %>
+                                    </h3>
+
+                                    <% if (person.headline) { %>
+
+                                        <p>
+                                            <%= person.headline %>
+                                        </p>
+
+                                    <% } %>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Skills -->
+
+                            <% if (
+                                person.skills &&
+                                person.skills.length > 0
+                            ) { %>
+
+                                <div class="skills">
+
+                                    <% person.skills.forEach(skill => { %>
+
+                                        <span>
+                                            <%= skill %>
+                                        </span>
+
+                                    <% }) %>
+
+                                </div>
+
+                            <% } %>
+
+
+                            <!-- Profile Button -->
+
+                            <a
+                                href="/profile/user/<%= person._id %>"
+                                class="view-profile-btn"
+                            >
+                                View Profile →
+                            </a>
+
+                        </article>
+
+                    <% }) %>
+
+                </div>
+
+            <% } %>
+
+        <% } else { %>
+
+            <div class="search-empty">
+
+                <div class="search-empty-icon">
+                    🔎
+                </div>
+
+                <h2>Search Developers</h2>
+
+                <p>
+                    Find developers by their
+                    <strong>name</strong>,
+                    <strong>heading</strong> or
+                    <strong>skills</strong>.
+                </p>
+
+            </div>
+
+        <% } %>
+
+    </main>
+
+
+</body>
+
+</html>

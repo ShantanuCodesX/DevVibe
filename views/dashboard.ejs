@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Devhub</title>
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="/dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         TOP NAVBAR
+    ========================== -->
+
+    <nav class="dashboard-navbar">
+
+
+        <!-- LEFT: PROFILE + BRAND -->
+
+        <div class="navbar-left">
+
+           
+
+            <a
+                href="/dashboard"
+                class="dashboard-brand"
+            >
+                Devhub
+            </a>
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <a
+            href="/profile/search"
+            class="search-icon"
+            aria-label="Search Developers"
+        >
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+
+
+
+        <!-- RIGHT -->
+
+        <div class="dashboard-user">
+
+            <span>
+                Site.com/<%= user.name %>
+            </span>
+
+        </div>
+
+
+    </nav>
+
+
+
+    <!-- =========================
+         DESKTOP SIDEBAR
+    ========================== -->
+
+    <aside class="dashboard-sidebar">
+
+
+        <a
+            href="/dashboard"
+            class="menu-item active"
+        >
+            <span class="menu-icon">
+                <i class="fa-solid fa-house"></i>
+            </span>
+
+            Home
+        </a>
+
+
+        <a
+            href="/projects"
+            class="menu-item"
+        >
+            <span class="menu-icon">
+                <i class="fa-solid fa-file"></i>
+            </span>
+
+            Projects
+        </a>
+
+
+        <a
+            href="/projects/add"
+            class="menu-item"
+        >
+            <span class="menu-icon">
+                <i class="fa-solid fa-folder-plus"></i>
+            </span>
+
+            Add Project
+        </a>
+
+        <a href="/settings" class="menu-item">
+    <span class="menu-icon">
+        <i class="fa-solid fa-gear"></i>
+    </span>
+    Settings
+</a>
+
+         <a
+                href="/profile"
+                class="navbar-profile"
+            >
+
+                <% if (user.profileImage) { %>
+
+                    <img
+                        src="<%= user.profileImage %>"
+                        alt="<%= user.name %>"
+                        class="navbar-profile-image"
+                    >
+
+                <% } else { %>
+
+                    <div class="navbar-profile-placeholder">
+
+                        <%= user.name
+                            .charAt(0)
+                            .toUpperCase() %>
+
+                    </div>
+
+                <% } %>
+
+
+                <span class="navbar-profile-name">
+                    <%= user.name %>
+                </span>
+
+            </a>
+
+            
+
+
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="dashboard-main">
+
+
+        <% if (!projects || projects.length === 0) { %>
+
+
+            <!-- EMPTY -->
+
+            <div class="dashboard-empty">
+
+                <h2>
+                    No projects yet
+                </h2>
+
+                <p>
+                    Add your first project to showcase your work.
+                </p>
+
+                <a
+                    href="/projects/add"
+                    class="add-project-btn"
+                >
+                    <i class="fa-solid fa-plus"></i>
+                    Add New Project
+                </a>
+
+            </div>
+
+
+        <% } else { %>
+
+
+            <!-- PROJECT FEED -->
+
+            <div class="dashboard-project-list">
+
+
+                <% projects.forEach(project => { %>
+
+
+                    <article class="dashboard-project-card">
+
+
+                        <!-- =========================
+     OWNER + THREE DOT
+========================= -->
+
+<div class="project-owner-row">
+
+    <div class="project-owner">
+
+        <a
+            href="/profile/user/<%= project.user._id %>"
+            class="project-owner-link"
+        >
+
+            <% if (project.user && project.user.profileImage) { %>
+
+                <img
+                    src="<%= project.user.profileImage %>"
+                    alt="<%= project.user.name %>"
+                    class="project-owner-image"
+                >
+
+            <% } else { %>
+
+                <div class="project-owner-placeholder">
+
+                    <%= project.user
+                        ? project.user.name.charAt(0).toUpperCase()
+                        : "U"
+                    %>
+
+                </div>
+
+            <% } %>
+
+
+            <div class="project-owner-details">
+
+                <strong>
+                    <%= project.user ? project.user.name : "Unknown User" %>
+                </strong>
+
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- THREE DOT -->
+
+    <% if (
+        project.user &&
+        String(project.user._id) === String(user._id)
+    ) { %>
+
+        <details class="project-menu">
+
+            <summary
+                class="three-dots"
+                aria-label="Project options"
+            >
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </summary>
+
+
+            <div class="project-menu-dropdown">
+
+                <a
+                    href="/projects/edit/<%= project._id %>"
+                >
+                    <i class="fa-solid fa-pen"></i>
+                    Edit
+                </a>
+
+
+                <form
+                    action="/projects/delete/<%= project._id %>"
+                    method="POST"
+                >
+
+                    <button type="submit">
+
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </details>
+
+    <% } %>
+
+</div>
+
+
+
+                        <!-- =========================
+                             SCREENSHOT
+                        ========================== -->
+
+                        <% if (
+                            project.screenshots &&
+                            project.screenshots.length > 0
+                        ) { %>
+
+
+                            <div class="project-screenshot-wrapper">
+
+                                <img
+                                    src="<%= project.screenshots[0] %>"
+                                    alt="<%= project.name %>"
+                                    class="project-screenshot"
+                                >
+
+                            </div>
+
+
+                        <% } else { %>
+
+
+                            <div class="no-screenshot">
+                                No screenshot
+                            </div>
+
+
+                        <% } %>
+
+
+
+                        <!-- =========================
+                             PROJECT INFO
+                        ========================== -->
+
+                        <div class="project-info">
+
+
+                            <h2>
+                                <%= project.name %>
+                            </h2>
+
+
+                            <p class="project-description">
+                                <%= project.description %>
+                            </p>
+
+
+                            <% if (
+                                project.techStack &&
+                                project.techStack.length > 0
+                            ) { %>
+
+
+                                <div class="tech-list">
+
+                                    <% project.techStack.forEach(tech => { %>
+
+                                        <span>
+                                            <%= tech %>
+                                        </span>
+
+                                    <% }) %>
+
+                                </div>
+
+
+                            <% } %>
+
+
+                        </div>
+
+
+
+                        <!-- =========================
+                             BOTTOM
+                        ========================== -->
+
+                        <div class="project-bottom">
+
+
+                            <div class="project-links">
+
+
+                                <% if (project.liveLink) { %>
+
+                                    <a
+                                        href="<%= project.liveLink %>"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="live-btn"
+                                    >
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        Live App
+                                    </a>
+
+                                <% } %>
+
+
+
+                                <% if (project.sourceCode) { %>
+
+                                    <a
+                                        href="<%= project.sourceCode %>"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="source-btn"
+                                    >
+                                        <i class="fa-brands fa-github"></i>
+                                        Source Code
+                                    </a>
+
+                                <% } %>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </article>
+
+
+                <% }) %>
+
+
+            </div>
+
+
+        <% } %>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         MOBILE BOTTOM NAV
+    ========================== -->
+
+    <nav class="mobile-bottom-nav">
+
+
+        <a
+            href="/dashboard"
+            class="mobile-nav-item active"
+        >
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+
+        <a
+            href="/projects"
+            class="mobile-nav-item"
+        >
+
+            <i class="fa-solid fa-file"></i>
+
+            <span>
+                Projects
+            </span>
+
+        </a>
+
+
+
+        <a
+            href="/projects/add"
+            class="mobile-nav-item add-nav-item"
+        >
+
+            <span class="add-icon">
+                <i class="fa-solid fa-plus"></i>
+            </span>
+
+            <span>
+                Add
+            </span>
+
+        </a>
+
+
+
+        <a
+            href="/profile"
+            class="mobile-nav-item profile-nav-item"
+        >
+
+            <% if (user.profileImage) { %>
+
+                <img
+                    src="<%= user.profileImage %>"
+                    alt="<%= user.name %>"
+                    class="mobile-profile-image"
+                >
+
+            <% } else { %>
+
+                <span class="mobile-profile-placeholder">
+
+                    <%= user.name
+                        .charAt(0)
+                        .toUpperCase() %>
+
+                </span>
+
+            <% } %>
+
+
+            <span>
+                <%= user.name %>
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+</body>
+
+</html>

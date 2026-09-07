@@ -1,0 +1,430 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #e5e7eb;
+
+    color: #111827;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================
+   PREVIEW TOOLBAR
+===================================== */
+
+.preview-toolbar {
+    width: 100%;
+
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 12px 30px;
+
+    background: #111827;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+.preview-toolbar a,
+.preview-toolbar button {
+    padding: 10px 17px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+.preview-toolbar a {
+    color: #ffffff;
+
+    border: 1px solid #475569;
+}
+
+
+.preview-toolbar a:hover {
+    background: #1f2937;
+}
+
+
+.preview-toolbar button {
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+.preview-toolbar button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =====================================
+   RESUME PAPER
+===================================== */
+
+.resume-paper {
+    width: 210mm;
+
+    min-height: 297mm;
+
+    margin: 40px auto;
+
+    padding: 20mm;
+
+    background: #ffffff;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================
+   RESUME HEADER
+===================================== */
+
+.resume-header {
+    text-align: center;
+
+    padding-bottom: 16px;
+
+    border-bottom: 2px solid #111827;
+}
+
+
+.resume-header h1 {
+    font-size: 30px;
+
+    line-height: 1.2;
+
+    margin-bottom: 5px;
+}
+
+
+.resume-header h2 {
+    font-size: 17px;
+
+    font-weight: 500;
+
+    margin-bottom: 10px;
+
+    color: #374151;
+}
+
+
+/* =====================================
+   CONTACT INFORMATION
+===================================== */
+
+.contact-info {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    font-size: 12px;
+
+    color: #374151;
+}
+
+
+.contact-info span:not(:last-child)::after {
+    content: " | ";
+
+    margin-left: 10px;
+
+    color: #9ca3af;
+}
+
+
+/* =====================================
+   SOCIAL LINKS
+===================================== */
+
+.resume-links {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 7px;
+}
+
+
+.resume-links a {
+    color: #111827;
+
+    font-size: 12px;
+
+    text-decoration: underline;
+}
+
+
+/* =====================================
+   RESUME SECTIONS
+===================================== */
+
+.resume-paper section {
+    margin-top: 22px;
+}
+
+
+.resume-paper section h3 {
+    font-size: 14px;
+
+    letter-spacing: 0.6px;
+
+    margin-bottom: 9px;
+
+    padding-bottom: 5px;
+
+    border-bottom: 1px solid #9ca3af;
+
+    color: #111827;
+}
+
+
+.resume-paper section p {
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #1f2937;
+}
+
+
+/* =====================================
+   PROJECTS
+===================================== */
+
+.resume-project {
+    margin-bottom: 17px;
+}
+
+
+.resume-project:last-child {
+    margin-bottom: 0;
+}
+
+
+.project-title {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 3px;
+}
+
+
+.project-title strong {
+    font-size: 14px;
+}
+
+
+.project-title a {
+    color: #111827;
+
+    font-size: 11px;
+
+    text-decoration: underline;
+}
+
+
+.project-title a:hover {
+    color: #2563eb;
+}
+
+
+.project-tech {
+    margin-top: 4px !important;
+
+    font-size: 12px !important;
+
+    color: #374151 !important;
+}
+
+
+/* =====================================
+   EXPERIENCE
+===================================== */
+
+.experience {
+    font-size: 13px;
+
+    color: #111827;
+}
+
+
+.experience strong {
+    font-size: 14px;
+}
+
+
+.experience span {
+    font-size: 13px;
+
+    color: #374151;
+}
+
+
+/* =====================================
+   PRINT
+===================================== */
+
+@media print {
+
+    body {
+        background: #ffffff;
+    }
+
+
+    .preview-toolbar {
+        display: none;
+    }
+
+
+    .resume-paper {
+        width: 100%;
+
+        min-height: auto;
+
+        margin: 0;
+
+        padding: 0;
+
+        box-shadow: none;
+    }
+
+
+    .resume-paper section {
+        break-inside: avoid;
+    }
+
+
+    .resume-project {
+        break-inside: avoid;
+    }
+
+
+    @page {
+        size: A4;
+
+        margin: 15mm;
+    }
+
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 900px) {
+
+    .resume-paper {
+        width: calc(100% - 30px);
+
+        min-height: auto;
+
+        margin: 20px auto;
+
+        padding: 35px;
+    }
+
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 600px) {
+
+    .preview-toolbar {
+        padding: 10px 15px;
+
+        gap: 10px;
+    }
+
+
+    .preview-toolbar a,
+    .preview-toolbar button {
+        padding: 9px 11px;
+
+        font-size: 12px;
+    }
+
+
+    .resume-paper {
+        width: calc(100% - 20px);
+
+        margin: 10px auto;
+
+        padding: 25px 20px;
+    }
+
+
+    .resume-header h1 {
+        font-size: 25px;
+    }
+
+
+    .resume-header h2 {
+        font-size: 15px;
+    }
+
+
+    .contact-info {
+        flex-direction: column;
+
+        gap: 3px;
+    }
+
+
+    .contact-info span:not(:last-child)::after {
+        content: "";
+        margin: 0;
+    }
+
+
+    .resume-paper section {
+        margin-top: 18px;
+    }
+
+}
