@@ -1,313 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile - Devvibe</title>
-
-    <link
-        rel="stylesheet"
-        href="/edit-profile.css"
-    >
-
+    <link rel="stylesheet" href="/edit-profile.css">
 </head>
-
 
 <body>
 
+<nav class="edit-navbar">
+    <div class="brand">Devvibe</div>
+    <a href="/profile">Back to Profile</a>
+</nav>
 
-    <!-- Navbar -->
+<main class="edit-container">
 
-    <nav class="edit-navbar">
+    <div class="edit-header">
+        <h1>Edit Profile</h1>
+        <p>Update your developer profile.</p>
+    </div>
 
-        <div class="brand">
-            Devvibe
-        </div>
+    <form
+        action="/profile/edit"
+        method="POST"
+        enctype="multipart/form-data"
+        class="edit-form"
+    >
 
-        <a href="/profile">
-            Back to Profile
-        </a>
+        <div class="form-section">
+            <h2>Profile Picture</h2>
 
-    </nav>
+            <div class="profile-picture-area">
 
+                <% if (user.profileImage) { %>
 
+                    <img
+                        src="<%= user.profileImage %>"
+                        class="current-image"
+                        alt="Profile"
+                    >
 
-    <!-- Main -->
+                <% } else { %>
 
-    <main class="edit-container">
-
-
-        <div class="edit-header">
-
-            <h1>
-                Edit Profile
-            </h1>
-
-            <p>
-                Update your developer profile.
-            </p>
-
-        </div>
-
-
-
-        <!-- Form -->
-
-        <form
-            action="/profile/edit"
-            method="POST"
-            enctype="multipart/form-data"
-            class="edit-form"
-        >
-
-
-            <!-- Profile Picture -->
-
-            <div class="form-section">
-
-                <h2>
-                    Profile Picture
-                </h2>
-
-
-                <div class="profile-picture-area">
-
-                    <% if (user.profileImage) { %>
-
-                        <img
-                            src="<%= user.profileImage %>"
-                            class="current-image"
-                            alt="Profile"
-                        >
-
-                    <% } else { %>
-
-                        <div class="current-placeholder">
-
-                            <%= (user.name || "U").charAt(0).toUpperCase() %>
-
-                        </div>
-
-                    <% } %>
-
-
-                    <div>
-
-                        <label
-                            for="profileImage"
-                            class="upload-btn"
-                        >
-                            Choose Image
-                        </label>
-
-                        <input
-                            type="file"
-                            id="profileImage"
-                            name="profileImage"
-                            accept="image/png,image/jpeg,image/webp"
-                            hidden
-                        >
-
-                        <p class="small-text">
-                            JPG, PNG or WEBP. Max 5MB.
-                        </p>
-
+                    <div class="current-placeholder">
+                        <%= (user.name || "U").charAt(0).toUpperCase() %>
                     </div>
 
+                <% } %>
+
+                <div>
+                    <label for="profileImage" class="upload-btn">
+                        Choose Image
+                    </label>
+
+                    <input
+                        type="file"
+                        id="profileImage"
+                        name="profileImage"
+                        accept="image/png,image/jpeg,image/webp"
+                        hidden
+                    >
+
+                    <p class="small-text">
+                        JPG, PNG or WEBP. Max 5MB.
+                    </p>
                 </div>
 
             </div>
+        </div>
 
+        <div class="form-section">
+            <h2>About You</h2>
 
+            <div class="form-group">
+                <label>Name</label>
 
-            <!-- Basic Profile -->
-
-            <div class="form-section">
-
-                <h2>
-                    About You
-                </h2>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Name
-                    </label>
-
-                    <input
-                        type="text"
-                        value="<%= user.name %>"
-                        disabled
-                    >
-
-                    <small>
-                        Name comes from your signup account.
-                    </small>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Headline
-                    </label>
-
-                    <input
-                        type="text"
-                        name="headline"
-                        value="<%= user.headline %>"
-                        placeholder="Full Stack Developer"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Bio
-                    </label>
-
-                    <textarea
-                        name="bio"
-                        rows="5"
-                        placeholder="Tell people about yourself..."
-                    ><%= user.bio %></textarea>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Social Links -->
-
-            <div class="form-section">
-
-                <h2>
-                    Social Links
-                </h2>
-
-
-                <div class="form-group">
-
-                    <label>
-                        GitHub
-                    </label>
-
-                    <input
-                        type="url"
-                        name="github"
-                        value="<%= user.github %>"
-                        placeholder="https://github.com/username"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        LinkedIn
-                    </label>
-
-                    <input
-                        type="url"
-                        name="linkedin"
-                        value="<%= user.linkedin %>"
-                        placeholder="https://linkedin.com/in/username"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Instagram
-                    </label>
-
-                    <input
-                        type="url"
-                        name="instagram"
-                        value="<%= user.instagram %>"
-                        placeholder="https://instagram.com/username"
-                    >
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Skills -->
-
-            <div class="form-section">
-
-                <h2>
-                    Skills
-                </h2>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Skills
-                    </label>
-
-                    <input
-                        type="text"
-                        name="skills"
-                        value="<%= (user.skills || []).join(', ') %>"
-                        placeholder="React, Node.js, MongoDB"
-                    >
-
-                    <small>
-                        Separate skills with commas.
-                    </small>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Buttons -->
-
-            <div class="form-actions">
-
-                <a
-                    href="/profile"
-                    class="cancel-btn"
+                <input
+                    type="text"
+                    value="<%= user.name || '' %>"
+                    disabled
                 >
-                    Cancel
-                </a>
 
-
-                <button
-                    type="submit"
-                    class="save-btn"
-                >
-                    Save Changes
-                </button>
-
+                <small>
+                    Name comes from your signup account.
+                </small>
             </div>
 
+            <div class="form-group">
+                <label>Headline</label>
 
-        </form>
+                <input
+                    type="text"
+                    name="headline"
+                    value="<%= user.headline || '' %>"
+                    placeholder="Full Stack Developer"
+                >
+            </div>
 
-    </main>
+            <div class="form-group">
+                <label>Bio</label>
 
+                <textarea
+                    name="bio"
+                    rows="5"
+                    placeholder="Tell people about yourself..."
+                ><%= user.bio || '' %></textarea>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Social Links</h2>
+
+            <div class="form-group">
+                <label>GitHub</label>
+
+                <input
+                    type="url"
+                    name="github"
+                    value="<%= user.github || '' %>"
+                    placeholder="https://github.com/username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>LinkedIn</label>
+
+                <input
+                    type="url"
+                    name="linkedin"
+                    value="<%= user.linkedin || '' %>"
+                    placeholder="https://linkedin.com/in/username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Instagram</label>
+
+                <input
+                    type="url"
+                    name="instagram"
+                    value="<%= user.instagram || '' %>"
+                    placeholder="https://instagram.com/username"
+                >
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Skills</h2>
+
+            <div class="form-group">
+                <label>Skills</label>
+
+                <input
+                    type="text"
+                    name="skills"
+                    value="<%= (user.skills || []).join(', ') %>"
+                    placeholder="React, Node.js, MongoDB"
+                >
+
+                <small>
+                    Separate skills with commas.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <a href="/profile" class="cancel-btn">
+                Cancel
+            </a>
+
+            <button type="submit" class="save-btn">
+                Save Changes
+            </button>
+        </div>
+
+    </form>
+
+</main>
 
 </body>
-
 </html>
