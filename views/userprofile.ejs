@@ -1,379 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= user.name %> - Devvibe</title>
-
-    <link
-        rel="stylesheet"
-        href="/userprofile.css"
-    >
-
+    <link rel="stylesheet" href="/userprofile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 
 <body>
 
+<nav class="userprofile-navbar">
+    <div class="brand">Devvibe</div>
+</nav>
 
-    <!-- =========================
-         NAVBAR
-    ========================== -->
+<main class="userprofile-container">
 
-    <nav class="userprofile-navbar">
+    <section class="userprofile-header">
 
-        <div class="brand">
-            Devvibe
-        </div>
-
-    </nav>
-
-
-
-    <!-- =========================
-         PROFILE
-    ========================== -->
-
-    <main class="userprofile-container">
-
-
-        <!-- PROFILE HEADER -->
-
-        <section class="userprofile-header">
-
-
-            <!-- Profile Image -->
+        <div class="profile-top">
 
             <div class="profile-image-container">
-
                 <% if (user.profileImage) { %>
-
                     <img
                         src="<%= user.profileImage %>"
                         alt="<%= user.name %>"
                         class="profile-image"
                     >
-
                 <% } else { %>
-
                     <div class="profile-placeholder">
-
                         <%= (user.name || "U").charAt(0).toUpperCase() %>
-
                     </div>
-
                 <% } %>
-
             </div>
 
-
-
-            <!-- Profile Information -->
-
-            <div class="profile-info">
-
-                <h1>
-                    <%= user.name %>
-                </h1>
-
+            <div class="profile-heading">
+                <h1><%= user.name %></h1>
 
                 <% if (user.headline) { %>
-
-                    <h2>
-                        <%= user.headline %>
-                    </h2>
-
+                    <h2><%= user.headline %></h2>
                 <% } else { %>
-
-                    <h2>
-                        Full Stack Developer
-                    </h2>
-
+                    <h2>Full Stack Developer</h2>
                 <% } %>
+            </div>
 
+        </div>
 
+        <div class="profile-info">
 
-                <!-- Bio -->
+            <% if (user.bio) { %>
+                <p class="bio"><%= user.bio %></p>
+            <% } %>
 
-                <% if (user.bio) { %>
-
-                    <p class="bio">
-                        <%= user.bio %>
-                    </p>
-
-                <% } %>
-
-
-
-                <!-- Social Links -->
-
-                <div class="social-links">
-
-                    <% if (user.github) { %>
-
-                        <a
-                            href="<%= user.github %>"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            GitHub
-                        </a>
-
-                    <% } %>
-
-
-                    <% if (user.linkedin) { %>
-
-                        <a
-                            href="<%= user.linkedin %>"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            LinkedIn
-                        </a>
-
-                    <% } %>
-
-
-                    <% if (user.instagram) { %>
-
-                        <a
-                            href="<%= user.instagram %>"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Instagram
-                        </a>
-
-                    <% } %>
-
+            <% if (user.skills && user.skills.length > 0) { %>
+                <div class="skills">
+                    <% user.skills.forEach(skill => { %>
+                        <span><%= skill %></span>
+                    <% }) %>
                 </div>
+            <% } %>
 
+            <div class="social-links">
 
-
-                <!-- Skills -->
-
-                <% if (user.skills && user.skills.length > 0) { %>
-
-                    <div class="skills">
-
-                        <% user.skills.forEach(skill => { %>
-
-                            <span>
-                                <%= skill %>
-                            </span>
-
-                        <% }) %>
-
-                    </div>
-
-                    <div class="user-resume-action">
-                        <a href="/profile/user/<%= user._id %>/resume" class="view-resume-btn">View Resume</a>
-                    </div>
-
+                <% if (user.github) { %>
+                    <a href="<%= user.github %>" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                    </a>
                 <% } %>
 
+                <% if (user.linkedin) { %>
+                    <a href="<%= user.linkedin %>" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                <% } %>
+
+                <% if (user.instagram) { %>
+                    <a href="<%= user.instagram %>" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                        Instagram
+                    </a>
+                <% } %>
 
             </div>
 
-        </section>
-
-
-
-        <!-- =========================
-             PROOF OF WORK
-        ========================== -->
-
-        <section class="proof-section">
-
-
-            <div class="section-title">
-
-                <h2>
-                    Proof of Work
-                </h2>
-
-                <p>
-                    Projects I've built and shipped.
-                </p>
-
+            <div class="user-resume-action">
+                <a href="/profile/user/<%= user._id %>/resume" class="view-resume-btn">
+                    <i class="fa-solid fa-file-lines"></i>
+                    View Resume
+                </a>
             </div>
 
+        </div>
 
+    </section>
 
-            <% if (!projects || projects.length === 0) { %>
+    <section class="proof-section">
 
+        <div class="section-title">
+            <h2>Proof of Work</h2>
+            <p>Projects I've built and shipped.</p>
+        </div>
 
-                <div class="no-projects">
+        <% if (!projects || projects.length === 0) { %>
 
-                    <h3>
-                        No projects yet
-                    </h3>
+            <div class="no-projects">
+                <i class="fa-regular fa-folder-open"></i>
+                <h3>No projects yet</h3>
+                <p>Projects will appear here when they are added.</p>
+            </div>
 
-                    <p>
-                        Projects will appear here when they are added.
-                    </p>
+        <% } else { %>
 
-                </div>
+            <div class="proof-projects">
 
+                <% projects.forEach(project => { %>
 
-            <% } else { %>
+                    <article class="proof-project-card">
 
+                        <% if (project.screenshots && project.screenshots.length > 0) { %>
 
-                <div class="proof-projects">
+                            <div class="proof-images">
 
+                                <% project.screenshots.forEach((image, index) => { %>
 
-                    <% projects.forEach(project => { %>
+                                    <img
+                                        src="<%= image %>"
+                                        alt="<%= project.name %> screenshot <%= index + 1 %>"
+                                        class="proof-image"
+                                        loading="lazy"
+                                    >
 
+                                <% }) %>
 
-                        <article class="proof-project-card">
+                            </div>
 
+                        <% } %>
 
-                            <!-- PROJECT SCREENSHOTS -->
+                        <div class="proof-content">
 
-                            <% if (
-                                project.screenshots &&
-                                project.screenshots.length > 0
-                            ) { %>
+                            <h3><%= project.name %></h3>
 
+                            <% if (project.description) { %>
+                                <p><%= project.description %></p>
+                            <% } %>
 
-                                <div class="proof-images">
+                            <% if (project.techStack && project.techStack.length > 0) { %>
 
+                                <div class="proof-tech">
 
-                                    <% project.screenshots.forEach(image => { %>
-
-
-                                        <img
-                                            src="<%= image %>"
-                                            alt="<%= project.name %> screenshot"
-                                            class="proof-image"
-                                        >
-
-
+                                    <% project.techStack.forEach(tech => { %>
+                                        <span><%= tech %></span>
                                     <% }) %>
-
 
                                 </div>
 
-
                             <% } %>
 
-
-
-                            <!-- PROJECT CONTENT -->
-
-                            <div class="proof-content">
-
-
-                                <h3>
-                                    <%= project.name %>
-                                </h3>
-
-
-                                <% if (project.description) { %>
-
-                                    <p>
-                                        <%= project.description %>
-                                    </p>
-
-                                <% } %>
-
-
-
-                                <!-- TECH STACK -->
-
-                                <% if (
-                                    project.techStack &&
-                                    project.techStack.length > 0
-                                ) { %>
-
-
-                                    <div class="proof-tech">
-
-
-                                        <% project.techStack.forEach(tech => { %>
-
-
-                                            <span>
-                                                <%= tech %>
-                                            </span>
-
-
-                                        <% }) %>
-
-
-                                    </div>
-
-
-                                <% } %>
-
-
-
-                                <!-- PROJECT LINKS -->
+                            <% if (project.liveLink || project.sourceCode) { %>
 
                                 <div class="proof-links">
 
-
                                     <% if (project.liveLink) { %>
-
                                         <a
                                             href="<%= project.liveLink %>"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             class="live-btn"
                                         >
-                                            Live App ↗
+                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                            Live App
                                         </a>
-
                                     <% } %>
 
-
-
                                     <% if (project.sourceCode) { %>
-
                                         <a
                                             href="<%= project.sourceCode %>"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             class="source-btn"
                                         >
+                                            <i class="fa-brands fa-github"></i>
                                             Source Code
                                         </a>
-
                                     <% } %>
-
 
                                 </div>
 
+                            <% } %>
 
-                            </div>
+                        </div>
 
+                    </article>
 
-                        </article>
+                <% }) %>
 
+            </div>
 
-                    <% }) %>
+        <% } %>
 
+    </section>
 
-                </div>
-
-
-            <% } %>
-
-
-        </section>
-
-
-    </main>
-
+</main>
 
 </body>
-
 </html>

@@ -1,449 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= user.name %> - Devvibe</title>
-
-    <link
-        rel="stylesheet"
-        href="/profile.css"
-    >
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
+    <link rel="stylesheet" href="/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 
 <body>
 
+<nav class="profile-navbar">
+    <a href="/" class="brand">Devvibe</a>
 
-    <!-- ==================== Navbar ==================== -->
+    <button type="button" class="share-portfolio" onclick="sharePortfolio()">
+        <i class="fa-solid fa-share-nodes"></i>
+        <span>Share Portfolio</span>
+    </button>
+</nav>
 
-    <nav class="profile-navbar">
+<main class="profile-container">
 
-        <div class="brand">
-            Devvibe
-        </div>
+    <section class="profile-card">
 
-        <button
-            type="button"
-            class="share-portfolio"
-            onclick="sharePortfolio()"
-        >
-            <i class="fa-solid fa-share-nodes"></i>
-            Share Portfolio
-        </button>
-
-    </nav>
-
-
-
-    <!-- ==================== Profile ==================== -->
-
-    <main class="profile-container">
-
-
-        <!-- ==================== Profile Header ==================== -->
-
-        <section class="profile-header">
-
+        <div class="profile-top">
 
             <div class="profile-image-container">
-
                 <% if (user.profileImage) { %>
-
                     <img
                         src="<%= user.profileImage %>"
                         alt="<%= user.name %>"
                         class="profile-image"
                     >
-
                 <% } else { %>
-
                     <div class="profile-placeholder">
                         <%= user.name.charAt(0).toUpperCase() %>
                     </div>
-
                 <% } %>
-
             </div>
 
-
-
-            <div class="profile-info">
-
-                <h1>
-                    <%= user.name %>
-                </h1>
-
+            <div class="profile-heading">
+                <h1><%= user.name %></h1>
 
                 <% if (user.headline) { %>
-
-                    <h2>
-                        <%= user.headline %>
-                    </h2>
-
+                    <h2><%= user.headline %></h2>
                 <% } else { %>
-
-                    <h2>
-                        That full stack developer |
-                        @<%= user.name.toLowerCase().replace(/\s+/g, "") %>
-                    </h2>
-
+                    <h2>Full Stack Developer</h2>
                 <% } %>
-
-
-                <% if (user.bio) { %>
-
-                    <p class="bio">
-                        <%= user.bio %>
-                    </p>
-
-                <% } else { %>
-
-                    <p class="bio">
-                        Tell the world about yourself and what you build.
-                    </p>
-
-                <% } %>
-
-
-
-                <!-- ==================== Social Links ==================== -->
-
-                <div class="social-links">
-
-                    <% if (user.github) { %>
-
-                        <a
-                            href="<%= user.github %>"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i class="fa-brands fa-github"></i>
-                            GitHub
-                        </a>
-
-                    <% } %>
-
-
-                    <% if (user.linkedin) { %>
-
-                        <a
-                            href="<%= user.linkedin %>"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i class="fa-brands fa-linkedin"></i>
-                            LinkedIn
-                        </a>
-
-                    <% } %>
-
-
-                    <% if (user.instagram) { %>
-
-                        <a
-                            href="<%= user.instagram %>"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i class="fa-brands fa-instagram"></i>
-                            Instagram
-                        </a>
-
-                    <% } %>
-
-                </div>
-
-
-
-                <!-- ==================== Skills ==================== -->
-
-                <% if (user.skills && user.skills.length > 0) { %>
-
-                    <div class="skills">
-
-                        <% user.skills.forEach(skill => { %>
-
-                            <span>
-                                <%= skill %>
-                            </span>
-
-                        <% }) %>
-
-                    </div>
-
-                <% } %>
-
-
-
-                <!-- ==================== Profile Buttons ==================== -->
-
-                <div class="profile-actions">
-
-                    <a
-                        href="/resume"
-                        class="resume-btn"
-                    >
-                        <i class="fa-solid fa-file-arrow-down"></i>
-                        Download Resume
-                    </a>
-
-
-                    <a
-                        href="/profile/edit"
-                        class="edit-profile-btn"
-                    >
-                        <i class="fa-solid fa-pen"></i>
-                        Edit Profile
-                    </a>
-
-
-                    <a
-                        href="/settings"
-                        class="edit-profile-btn"
-                    >
-                        <i class="fa-solid fa-gear"></i>
-                        Settings
-                    </a>
-
-                </div>
-
             </div>
 
-        </section>
+        </div>
 
+        <div class="profile-details">
 
-
-        <!-- ==================== Proof of Work ==================== -->
-
-        <section class="proof-section">
-
-            <div class="section-title">
-
-                <h2>
-                    Proof of Work
-                </h2>
-
-                <p>
-                    Projects I've built and shipped.
-                </p>
-
-            </div>
-
-
-            <% if (!projects || projects.length === 0) { %>
-
-                <div class="no-projects">
-
-                    <h3>
-                        No projects yet
-                    </h3>
-
-                    <p>
-                        Projects will appear here when they are added.
-                    </p>
-
-                </div>
-
+            <% if (user.bio) { %>
+                <p class="bio"><%= user.bio %></p>
             <% } else { %>
+                <p class="bio">I build useful and modern digital experiences.</p>
+            <% } %>
 
+            <% if (user.skills && user.skills.length > 0) { %>
+                <div class="skills">
+                    <% user.skills.forEach(skill => { %>
+                        <span><%= skill %></span>
+                    <% }) %>
+                </div>
+            <% } %>
 
-                <div class="proof-projects">
+            <div class="social-links">
+                <% if (user.github) { %>
+                    <a href="<%= user.github %>" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                    </a>
+                <% } %>
 
+                <% if (user.linkedin) { %>
+                    <a href="<%= user.linkedin %>" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                <% } %>
 
-                    <% projects.forEach(project => { %>
+                <% if (user.instagram) { %>
+                    <a href="<%= user.instagram %>" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                        Instagram
+                    </a>
+                <% } %>
+            </div>
 
+            <div class="profile-actions">
+                <a href="/profile/edit" class="action-btn edit-profile-btn">
+                    <i class="fa-solid fa-pen"></i>
+                    Edit Profile
+                </a>
 
-                        <article class="proof-project-card">
+                <a href="/resume" class="action-btn resume-btn">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Download Resume
+                </a>
+            </div>
 
+            <a href="/settings" class="settings-btn">
+                <i class="fa-solid fa-gear"></i>
+                <span>
+                    <strong>Settings</strong>
+                    <small>Manage your account and preferences</small>
+                </span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
 
-                            <!-- ==================== Screenshot ==================== -->
+        </div>
 
-                            <% if (
-                                project.screenshots &&
-                                project.screenshots.length > 0
-                            ) { %>
+    </section>
 
-                                <div class="proof-images">
+    <section class="proof-section">
 
+        <div class="section-title">
+            <h2>Proof of Work</h2>
+            <p>Projects I've built and shipped.</p>
+        </div>
+
+        <% if (!projects || projects.length === 0) { %>
+
+            <div class="no-projects">
+                <div class="empty-icon">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h3>No projects yet</h3>
+                <p>Projects will appear here when they are added.</p>
+            </div>
+
+        <% } else { %>
+
+            <div class="proof-projects">
+
+                <% projects.forEach(project => { %>
+
+                    <article class="proof-project-card">
+
+                        <% if (project.screenshots && project.screenshots.length > 0) { %>
+                            <div class="proof-images">
+                                <% project.screenshots.forEach((screenshot, index) => { %>
                                     <img
-                                        src="<%= project.screenshots[0] %>"
-                                        alt="<%= project.name %> screenshot"
+                                        src="<%= screenshot %>"
+                                        alt="<%= project.name %> screenshot <%= index + 1 %>"
                                         class="proof-image"
+                                        loading="lazy"
                                     >
+                                <% }) %>
+                            </div>
+                        <% } %>
 
-                                </div>
+                        <div class="proof-content">
 
+                            <h3><%= project.name %></h3>
+
+                            <% if (project.description) { %>
+                                <p><%= project.description %></p>
                             <% } %>
 
+                            <% if (project.techStack && project.techStack.length > 0) { %>
+                                <div class="proof-tech">
+                                    <% project.techStack.forEach(tech => { %>
+                                        <span><%= tech %></span>
+                                    <% }) %>
+                                </div>
+                            <% } %>
 
-
-                            <!-- ==================== Project Content ==================== -->
-
-                            <div class="proof-content">
-
-                                <h3>
-                                    <%= project.name %>
-                                </h3>
-
-
-                                <p>
-                                    <%= project.description %>
-                                </p>
-
-
-
-                                <!-- Tech Stack -->
-
-                                <% if (
-                                    project.techStack &&
-                                    project.techStack.length > 0
-                                ) { %>
-
-                                    <div class="proof-tech">
-
-                                        <% project.techStack.forEach(tech => { %>
-
-                                            <span>
-                                                <%= tech %>
-                                            </span>
-
-                                        <% }) %>
-
-                                    </div>
-
-                                <% } %>
-
-
-
-                                <!-- Project Links -->
-
+                            <% if (project.liveLink || project.sourceCode) { %>
                                 <div class="proof-links">
 
                                     <% if (project.liveLink) { %>
-
-                                        <a
-                                            href="<%= project.liveLink %>"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
+                                        <a href="<%= project.liveLink %>" target="_blank" rel="noopener noreferrer">
                                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                             Live App
                                         </a>
-
                                     <% } %>
 
-
                                     <% if (project.sourceCode) { %>
-
-                                        <a
-                                            href="<%= project.sourceCode %>"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
+                                        <a href="<%= project.sourceCode %>" target="_blank" rel="noopener noreferrer">
                                             <i class="fa-brands fa-github"></i>
                                             Source Code
                                         </a>
-
                                     <% } %>
 
                                 </div>
+                            <% } %>
 
-                            </div>
+                        </div>
 
+                    </article>
 
-                        </article>
+                <% }) %>
 
+            </div>
 
-                    <% }) %>
+        <% } %>
 
+    </section>
 
-                </div>
+</main>
 
+<script>
+async function sharePortfolio() {
+    const portfolioUrl = window.location.origin + "/profile/user/<%= user._id %>";
 
-            <% } %>
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: "<%= user.name %> - Devvibe",
+                text: "Check out my portfolio on Devvibe",
+                url: portfolioUrl
+            });
+        } catch (error) {}
+        return;
+    }
 
-        </section>
-
-
-    </main>
-
-
-
-    <!-- ==================== Share Script ==================== -->
-
-    <script>
-
-        async function sharePortfolio() {
-
-            const portfolioUrl =
-                window.location.origin +
-                "/profile/user/<%= user._id %>";
-
-
-            /*
-             * Native Share API
-             */
-
-            if (navigator.share) {
-
-                try {
-
-                    await navigator.share({
-
-                        title: "<%= user.name %> - Devvibe",
-
-                        text: "Check out my portfolio on Devvibe",
-
-                        url: portfolioUrl
-
-                    });
-
-                } catch (error) {
-
-                    /*
-                     * User closed the share popup.
-                     * Nothing needs to happen.
-                     */
-
-                    console.log("Share cancelled");
-
-                }
-
-                return;
-            }
-
-
-            /*
-             * Browser does not support Web Share API.
-             * Do NOT open the profile automatically.
-             */
-
-            alert(
-                "Sharing is not supported in this browser.\n\n" +
-                "Portfolio URL:\n" +
-                portfolioUrl
-            );
-
-        }
-
-    </script>
-
+    alert("Sharing is not supported in this browser.\n\nPortfolio URL:\n" + portfolioUrl);
+}
+</script>
 
 </body>
-
 </html>
