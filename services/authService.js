@@ -22,6 +22,9 @@ const loginUser = async (email, password) => {
         .select("_id password")
         .lean();
 
+        console.log("Login email:", email);
+        console.log("User found:", !! user);
+
     if (!user || !(await bcrypt.compare(password, user.password))) {
         throw new Error("Invalid email or password");
     }
