@@ -23,8 +23,20 @@ const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await authService.loginUser(email, password);
+
         req.session.userId = user._id;
-        res.redirect("/dashboard");
+
+        console.log("Session userId:", req.session.userId);
+
+        req.session.save((error) => {
+            if (error) {
+                console.error("Session save error:", error);
+                return res.status(500).send("Session error");
+            }
+
+            console.log("Session saved:", req.sessionID);
+            res.redirect("/dashboard");
+        });
     } catch (error) {
         res.status(401).send(error.message);
     }
