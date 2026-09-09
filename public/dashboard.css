@@ -434,14 +434,10 @@ body {
 
 .project-screenshot-wrapper {
     width: 100%;
-
     margin-bottom: 19px;
-
     overflow: hidden;
-
     border-radius: 9px;
-
-    background: #f3f4f6;
+    background: #f3f4f6
 }
 
 .project-screenshot {
@@ -856,7 +852,6 @@ body {
 
     .project-screenshot {
         width: 100%;
-
         height: auto;
         display: block;
         object-fit: contain;
