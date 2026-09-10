@@ -20,12 +20,11 @@ connectDB();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.set("trust proxy", 1);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-
-app.set("trust proxy", 1);
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -55,6 +54,6 @@ app.use("/dashboard", dashboardRoutes);
 app.use("/resume", resumeRoutes);
 app.use("/settings", settingsRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
