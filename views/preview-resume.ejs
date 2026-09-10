@@ -2,41 +2,35 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Resume Preview - <%= user.name %></title>
 
-    <link
-        rel="stylesheet"
-        href="/preview-resume.css"
-    >
-
+    <link rel="stylesheet" href="/preview-resume.css">
 </head>
-
 
 <body>
 
 <% if (!pdfMode) { %>
 
-<div class="preview-toolbar">
+<nav class="preview-toolbar">
 
-    <a href="/resume/edit">
-        ← Edit Resume
+    <a href="/resume/edit" class="edit-btn">
+        <i>←</i>
+        <span>Edit Resume</span>
     </a>
 
-    <a href="/resume/download">Download PDF</a>
+    <a href="/resume/download" class="download-btn">
+        Download PDF
+    </a>
 
-</div>
+</nav>
+
 <% } %>
 
-<main class="resume-paper">
 
+<main class="resume-paper">
 
     <!-- HEADER -->
 
@@ -46,11 +40,9 @@
             <%= user.name %>
         </h1>
 
-
         <h2>
             <%= resume?.title || user.headline || "Full Stack Developer" %>
         </h2>
-
 
         <div class="contact-info">
 
@@ -58,44 +50,32 @@
                 <%= user.email %>
             </span>
 
-
             <% if (resume?.phone) { %>
-
                 <span>
                     <%= resume.phone %>
                 </span>
-
             <% } %>
 
-
             <% if (resume?.location) { %>
-
                 <span>
                     <%= resume.location %>
                 </span>
-
             <% } %>
 
         </div>
 
-
         <div class="resume-links">
 
             <% if (user.github) { %>
-
                 <a href="<%= user.github %>">
                     GitHub
                 </a>
-
             <% } %>
 
-
             <% if (user.linkedin) { %>
-
                 <a href="<%= user.linkedin %>">
                     LinkedIn
                 </a>
-
             <% } %>
 
         </div>
@@ -103,119 +83,139 @@
     </header>
 
 
-
     <!-- SUMMARY -->
 
     <% if (resume?.summary || user.bio) { %>
 
-        <section>
+    <section>
 
-            <h3>
-                PROFESSIONAL SUMMARY
-            </h3>
+        <h3>
+            PROFESSIONAL SUMMARY
+        </h3>
 
-            <p>
-                <%= resume?.summary || user.bio %>
-            </p>
+        <p>
+            <%= resume?.summary || user.bio %>
+        </p>
 
-        </section>
+    </section>
 
     <% } %>
-
 
 
     <!-- SKILLS -->
 
-    <% if (user.skills && user.skills.length > 0) { %>
+    <% if (
+        (user.skills && user.skills.length > 0) ||
+        resume?.additionalSkills
+    ) { %>
 
-        <section>
+    <section>
 
-            <h3>
-                TECHNICAL SKILLS
-            </h3>
+        <h3>
+            TECHNICAL SKILLS
+        </h3>
 
-            <p>
+        <p>
+
+            <% if (user.skills && user.skills.length > 0) { %>
                 <%= user.skills.join(" • ") %>
+            <% } %>
 
-                <% if (resume?.additionalSkills) { %>
-                    • <%= resume.additionalSkills %>
-                <% } %>
-            </p>
+            <% if (
+                user.skills &&
+                user.skills.length > 0 &&
+                resume?.additionalSkills
+            ) { %>
+                •
+            <% } %>
 
-        </section>
+            <% if (resume?.additionalSkills) { %>
+                <%= resume.additionalSkills %>
+            <% } %>
+
+        </p>
+
+    </section>
 
     <% } %>
-
 
 
     <!-- PROJECTS -->
 
     <% if (projects && projects.length > 0) { %>
 
-        <section>
+    <section>
 
-            <h3>
-                PROJECTS
-            </h3>
+        <h3>
+            PROJECTS
+        </h3>
 
+        <% projects.forEach(project => { %>
 
-            <% projects.forEach(project => { %>
+        <div class="resume-project">
 
-                <div class="resume-project">
+            <div class="project-title">
 
-                    <div class="project-title">
+                <strong>
+                    <%= project.name %>
+                </strong>
 
-                        <strong>
-                            <%= project.name %>
-                        </strong>
+                <% if (project.liveLink) { %>
 
-                        <% if (project.liveLink) { %>
+                    <a
+                        href="<%= project.liveLink %>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Live Demo
+                    </a>
 
-                            <a href="<%= project.liveLink %>">
-                                Live Demo
-                            </a>
+                <% } %>
 
-                        <% } %>
+                <% if (project.sourceCode) { %>
 
-                        <% if (project.sourceCode) { %>
+                    <a
+                        href="<%= project.sourceCode %>"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Source
+                    </a>
 
-                            <a href="<%= project.sourceCode %>">
-                                Source
-                            </a>
+                <% } %>
 
-                        <% } %>
+            </div>
 
-                    </div>
+            <% if (project.description) { %>
 
+            <p>
+                <%= project.description %>
+            </p>
 
-                    <p>
-                        <%= project.description %>
-                    </p>
+            <% } %>
 
+            <% if (
+                project.techStack &&
+                project.techStack.length
+            ) { %>
 
-                    <% if (
-                        project.techStack &&
-                        project.techStack.length
-                    ) { %>
+            <p class="project-tech">
 
-                        <p class="project-tech">
+                <strong>Technologies:</strong>
 
-                            <strong>Technologies:</strong>
+                <%= project.techStack.join(", ") %>
 
-                            <%= project.techStack.join(", ") %>
+            </p>
 
-                        </p>
+            <% } %>
 
-                    <% } %>
+        </div>
 
-                </div>
+        <% }) %>
 
-            <% }) %>
-
-        </section>
+    </section>
 
     <% } %>
-
 
 
     <!-- EXPERIENCE -->
@@ -226,39 +226,43 @@
         resume?.experienceDescription
     ) { %>
 
-        <section>
+    <section>
 
-            <h3>
-                EXPERIENCE
-            </h3>
+        <h3>
+            EXPERIENCE
+        </h3>
 
+        <div class="experience">
 
-            <div class="experience">
+            <% if (resume?.experienceTitle) { %>
 
                 <strong>
                     <%= resume.experienceTitle %>
                 </strong>
 
+            <% } %>
 
-                <% if (resume.company) { %>
+            <% if (resume?.company) { %>
 
-                    <span>
-                        — <%= resume.company %>
-                    </span>
+                <span>
+                    — <%= resume.company %>
+                </span>
 
-                <% } %>
+            <% } %>
 
+            <% if (resume?.experienceDescription) { %>
 
                 <p>
                     <%= resume.experienceDescription %>
                 </p>
 
-            </div>
+            <% } %>
 
-        </section>
+        </div>
+
+    </section>
 
     <% } %>
-
 
 
     <!-- EDUCATION -->
@@ -269,42 +273,52 @@
         resume?.graduationYear
     ) { %>
 
-        <section>
+    <section>
 
-            <h3>
-                EDUCATION
-            </h3>
+        <h3>
+            EDUCATION
+        </h3>
 
+        <p>
 
-            <p>
+            <% if (resume?.degree) { %>
 
                 <strong>
                     <%= resume.degree %>
                 </strong>
 
-                <% if (resume.college) { %>
+            <% } %>
 
-                    — <%= resume.college %>
+            <% if (resume?.college) { %>
 
+                <% if (resume?.degree) { %>
+                    —
                 <% } %>
 
+                <%= resume.college %>
 
-                <% if (resume.graduationYear) { %>
+            <% } %>
 
-                    | <%= resume.graduationYear %>
+            <% if (resume?.graduationYear) { %>
 
+                <% if (
+                    resume?.degree ||
+                    resume?.college
+                ) { %>
+                    |
                 <% } %>
 
-            </p>
+                <%= resume.graduationYear %>
 
-        </section>
+            <% } %>
+
+        </p>
+
+    </section>
 
     <% } %>
 
-
 </main>
 
-
 </body>
-
 </html>

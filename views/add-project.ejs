@@ -1,168 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Project - Devvibe</title>
-
-    <link
-        rel="stylesheet"
-        href="/add-project.css"
-    >
-
+    <link rel="stylesheet" href="/add-project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+<nav class="project-navbar">
+    <a href="/dashboard" class="brand">Devvibe</a>
 
-    <nav class="project-navbar">
+    <a href="/profile/search" class="desktop-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Search developers...</span>
+    </a>
 
-        <div class="brand">
-            Devvibe
-        </div>
+    <a href="/projects" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        Projects
+    </a>
+</nav>
 
-        <a href="/projects" class="back-link">
-            ← Back to Projects
+<aside class="project-sidebar">
+
+    <div class="sidebar-menu">
+        <a href="/dashboard" class="menu-item">
+            <span class="menu-icon"><i class="fa-solid fa-house"></i></span>
+            Home
         </a>
 
-    </nav>
+        <a href="/projects" class="menu-item">
+            <span class="menu-icon"><i class="fa-solid fa-file"></i></span>
+            Projects
+        </a>
 
+        <a href="/projects/add" class="menu-item active">
+            <span class="menu-icon"><i class="fa-solid fa-folder-plus"></i></span>
+            Add Project
+        </a>
 
-    <!-- ================= MAIN ================= -->
+        <a href="/settings" class="menu-item">
+            <span class="menu-icon"><i class="fa-solid fa-gear"></i></span>
+            Settings
+        </a>
+    </div>
 
-    <main class="project-container">
+    <a href="/profile" class="sidebar-profile">
+        <% if (user && user.profileImage) { %>
+            <img
+                src="<%= user.profileImage %>"
+                alt="<%= user.name %>"
+                class="sidebar-profile-image"
+            >
+        <% } else if (user) { %>
+            <span class="sidebar-profile-placeholder">
+                <%= user.name.charAt(0).toUpperCase() %>
+            </span>
+        <% } %>
 
-        <div class="page-heading">
+        <% if (user) { %>
+            <span class="sidebar-profile-name"><%= user.name %></span>
+        <% } %>
+    </a>
 
-            <h1>Add New Project</h1>
+</aside>
 
-            <p>
-                Add a project to showcase your work.
-            </p>
+<main class="project-container">
 
+    <div class="page-heading">
+        <div class="heading-icon">
+            <i class="fa-solid fa-folder-plus"></i>
         </div>
 
+        <div>
+            <h1>Add New Project</h1>
+            <p>Add a project to showcase your work.</p>
+        </div>
+    </div>
 
-        <!-- ================= FORM ================= -->
+    <form
+        action="/projects/add"
+        method="POST"
+        enctype="multipart/form-data"
+        class="project-form"
+    >
 
-        <form
-            action="/projects/add"
-            method="POST"
-            enctype="multipart/form-data"
-            class="project-form"
-        >
+        <div class="form-group">
+            <label for="name">Project Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="e.g. Devhub"
+                required
+            >
+        </div>
 
-            <!-- Project Name -->
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                name="description"
+                rows="4"
+                placeholder="Briefly describe what your project does..."
+                required
+            ></textarea>
+        </div>
 
-            <div class="form-group">
+        <div class="form-group">
+            <label for="techStack">Tech Stack</label>
+            <input
+                type="text"
+                id="techStack"
+                name="techStack"
+                placeholder="Node.js, Express, MongoDB"
+            >
+            <small>Separate technologies with commas.</small>
+        </div>
 
-                <label for="name">
-                    Project Name
-                </label>
+        <div class="form-group">
+            <label for="liveLink">Live App Link</label>
+            <input
+                type="url"
+                id="liveLink"
+                name="liveLink"
+                placeholder="https://myproject.com"
+            >
+        </div>
 
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="e.g. Devhub"
-                    required
-                >
+        <div class="form-group">
+            <label for="sourceCode">Source Code</label>
+            <input
+                type="url"
+                id="sourceCode"
+                name="sourceCode"
+                placeholder="https://github.com/username/project"
+            >
+        </div>
 
-            </div>
+        <div class="form-group">
+            <label for="screenshot">Project Screenshot</label>
 
+            <div class="file-upload">
+                <i class="fa-regular fa-image"></i>
 
-            <!-- Description -->
-
-            <div class="form-group">
-
-                <label for="description">
-                    Description
-                </label>
-
-                <textarea
-                    id="description"
-                    name="description"
-                    rows="4"
-                    placeholder="Briefly describe what your project does..."
-                    required
-                ></textarea>
-
-            </div>
-
-
-            <!-- Tech Stack -->
-
-            <div class="form-group">
-
-                <label for="techStack">
-                    Tech Stack
-                </label>
-
-                <input
-                    type="text"
-                    id="techStack"
-                    name="techStack"
-                    placeholder="Node.js, Express, MongoDB"
-                >
-
-                <small>
-                    Separate technologies with commas.
-                </small>
-
-            </div>
-
-
-            <!-- Live Link -->
-
-            <div class="form-group">
-
-                <label for="liveLink">
-                    Live App Link
-                </label>
-
-                <input
-                    type="url"
-                    id="liveLink"
-                    name="liveLink"
-                    placeholder="https://myproject.com"
-                >
-
-            </div>
-
-
-            <!-- Source Code -->
-
-            <div class="form-group">
-
-                <label for="sourceCode">
-                    Source Code
-                </label>
-
-                <input
-                    type="url"
-                    id="sourceCode"
-                    name="sourceCode"
-                    placeholder="https://github.com/username/project"
-                >
-
-            </div>
-
-
-            <!-- Screenshot -->
-
-            <div class="form-group">
-
-                <label for="screenshot">
-                    Project Screenshot
-                </label>
+                <div>
+                    <strong>Choose project screenshot</strong>
+                    <small>PNG, JPG or WEBP • Maximum 5MB</small>
+                </div>
 
                 <input
                     type="file"
@@ -170,38 +157,68 @@
                     name="screenshots"
                     accept="image/png,image/jpeg,image/webp"
                 >
-
-                <small>
-                    Upload one image only. Maximum size: 5MB.
-                </small>
-
             </div>
+        </div>
 
+        <div class="form-actions">
+            <a href="/projects" class="cancel-btn">
+                <i class="fa-solid fa-xmark"></i>
+                Cancel
+            </a>
 
-            <!-- Actions -->
+            <button type="submit" class="save-btn">
+                <i class="fa-solid fa-plus"></i>
+                Add Project
+            </button>
+        </div>
 
-            <div class="form-actions">
+    </form>
 
-                <a
-                    href="/projects"
-                    class="cancel-btn"
-                >
-                    Cancel
-                </a>
+</main>
 
-                <button
-                    type="submit"
-                    class="save-btn"
-                >
-                    Add Project
-                </button>
+<nav class="mobile-bottom-nav">
 
-            </div>
+    <a href="/dashboard" class="mobile-nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+    </a>
 
-        </form>
+    <a href="/projects" class="mobile-nav-item">
+        <i class="fa-solid fa-file"></i>
+        <span>Projects</span>
+    </a>
 
-    </main>
+    <a href="/projects/add" class="mobile-nav-item active add-nav-item">
+        <span class="add-icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+        <span>Add</span>
+    </a>
+
+    <a href="/profile/search" class="mobile-nav-item">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Search</span>
+    </a>
+
+    <a href="/profile" class="mobile-nav-item profile-nav-item">
+        <% if (user && user.profileImage) { %>
+            <img
+                src="<%= user.profileImage %>"
+                alt="<%= user.name %>"
+                class="mobile-profile-image"
+            >
+        <% } else if (user) { %>
+            <span class="mobile-profile-placeholder">
+                <%= user.name.charAt(0).toUpperCase() %>
+            </span>
+        <% } %>
+
+        <% if (user) { %>
+            <span class="mobile-profile-name"><%= user.name %></span>
+        <% } %>
+    </a>
+
+</nav>
 
 </body>
-
 </html>

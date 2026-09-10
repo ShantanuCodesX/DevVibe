@@ -1,21 +1,45 @@
 const projectService = require("../services/projectService");
+const User = require("../models/User");
 
 const showProjects = async (req, res) => {
     try {
-        const projects = await projectService.getUserProjects(req.session.userId);
-        res.render("projects", { projects });
+        const [projects, user] = await Promise.all([
+            projectService.getUserProjects(req.session.userId),
+            User.findById(req.session.userId)
+                .select("_id name profileImage")
+                .lean()
+        ]);
+
+        if (!user) {
+            return res.redirect("/auth/login");
+        }
+
+        res.render("projects", { projects, user });
     } catch (error) {
         res.status(500).send(error.message);
     }
 };
 
-const showAddProject = (req, res) => {
-    res.render("add-project");
+const showAddProject = async (req, res) => {
+    try {
+        const user = await User.findById(req.session.userId)
+            .select("_id name profileImage")
+            .lean();
+
+        if (!user) {
+            return res.redirect("/auth/login");
+        }
+
+        res.render("add-project", { user });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 };
 
 const createProject = async (req, res) => {
     try {
         const { name, description, techStack, liveLink, sourceCode } = req.body;
+
         const screenshots = req.files?.map(file => file.path) || [];
 
         await projectService.createProject({
@@ -56,6 +80,7 @@ const showEditProject = async (req, res) => {
 const updateProject = async (req, res) => {
     try {
         const { name, description, techStack, liveLink, sourceCode } = req.body;
+
         const projectData = {
             name,
             description,
@@ -88,6 +113,7 @@ const deleteProject = async (req, res) => {
             req.params.id,
             req.session.userId
         );
+
         res.redirect("/projects");
     } catch (error) {
         res.status(400).send(error.message);

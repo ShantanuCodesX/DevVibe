@@ -8,24 +8,19 @@ body {
     font-family: Arial, sans-serif;
     background: #f8fafc;
     color: #111827;
+    min-height: 100vh;
 }
 
-
-/* =========================
-   NAVBAR
-========================= */
+/* NAVBAR */
 
 .search-navbar {
     height: 70px;
     background: #ffffff;
     border-bottom: 1px solid #e5e7eb;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 40px;
-
     position: sticky;
     top: 0;
     z-index: 10;
@@ -49,24 +44,16 @@ body {
     color: #2563eb;
 }
 
-
-/* =========================
-   CONTAINER
-========================= */
+/* CONTAINER */
 
 .search-container {
     width: 100%;
     max-width: 1000px;
-
     margin: 0 auto;
-
     padding: 55px 25px 80px;
 }
 
-
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .search-header {
     text-align: center;
@@ -75,6 +62,7 @@ body {
 
 .search-header h1 {
     font-size: 32px;
+    line-height: 1.3;
     margin-bottom: 10px;
     color: #111827;
 }
@@ -82,38 +70,35 @@ body {
 .search-header p {
     color: #6b7280;
     font-size: 15px;
+    line-height: 1.5;
 }
 
-
-/* =========================
-   SEARCH FORM
-========================= */
+/* SEARCH FORM */
 
 .search-form {
     width: 100%;
     max-width: 700px;
-
     margin: 0 auto 45px;
-
     display: flex;
+    align-items: stretch;
     gap: 10px;
 }
 
 .search-form input {
     flex: 1;
-
+    width: 100%;
     height: 50px;
-
     padding: 0 16px;
-
     border: 1px solid #d1d5db;
     border-radius: 8px;
-
     background: #ffffff;
-
+    color: #111827;
     font-size: 15px;
-
     outline: none;
+}
+
+.search-form input::placeholder {
+    color: #9ca3af;
 }
 
 .search-form input:focus {
@@ -123,18 +108,13 @@ body {
 
 .search-form button {
     height: 50px;
-
     padding: 0 25px;
-
     border: none;
     border-radius: 8px;
-
     background: #2563eb;
     color: #ffffff;
-
     font-size: 15px;
     font-weight: 600;
-
     cursor: pointer;
 }
 
@@ -142,21 +122,19 @@ body {
     background: #1d4ed8;
 }
 
-
-/* =========================
-   RESULT HEADING
-========================= */
+/* RESULT HEADING */
 
 .result-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    gap: 15px;
     margin-bottom: 20px;
 }
 
 .result-heading h2 {
     font-size: 20px;
+    line-height: 1.4;
 }
 
 .result-heading span {
@@ -164,34 +142,22 @@ body {
     font-size: 14px;
 }
 
-
-/* =========================
-   USERS GRID
-========================= */
+/* USERS GRID */
 
 .users-grid {
     display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
 }
 
-
-/* =========================
-   USER CARD
-========================= */
+/* USER CARD */
 
 .user-card {
+    width: 100%;
     background: #ffffff;
-
     border: 1px solid #e5e7eb;
-
     border-radius: 12px;
-
     padding: 22px;
-
     transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
@@ -199,22 +165,15 @@ body {
 
 .user-card:hover {
     border-color: #bfdbfe;
-
-    box-shadow:
-        0 8px 25px rgba(15, 23, 42, 0.07);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
 }
 
-
-/* =========================
-   USER TOP
-========================= */
+/* USER TOP */
 
 .user-top {
     display: flex;
     align-items: center;
-
     gap: 14px;
-
     margin-bottom: 18px;
 }
 
@@ -222,37 +181,34 @@ body {
 .user-placeholder {
     width: 55px;
     height: 55px;
-
+    min-width: 55px;
     border-radius: 50%;
-
-    flex-shrink: 0;
 }
 
 .user-image {
     object-fit: cover;
+    display: block;
 }
 
 .user-placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #eff6ff;
-
     color: #2563eb;
-
     font-size: 21px;
     font-weight: 700;
 }
 
 .user-info {
     min-width: 0;
+    flex: 1;
 }
 
 .user-info h3 {
     font-size: 17px;
+    line-height: 1.3;
     margin-bottom: 5px;
-
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -261,64 +217,47 @@ body {
 .user-info p {
     color: #6b7280;
     font-size: 14px;
-
+    line-height: 1.4;
     overflow: hidden;
     text-overflow: ellipsis;
-
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
-
-/* =========================
-   SKILLS
-========================= */
+/* SKILLS */
 
 .skills {
     display: flex;
     flex-wrap: wrap;
-
     gap: 7px;
-
     margin-bottom: 20px;
 }
 
 .skills span {
     background: #eff6ff;
-
     color: #2563eb;
-
     padding: 6px 9px;
-
     border-radius: 6px;
-
     font-size: 12px;
     font-weight: 600;
 }
 
-
-/* =========================
-   VIEW PROFILE
-========================= */
+/* VIEW PROFILE */
 
 .view-profile-btn {
     display: block;
-
     width: 100%;
-
     text-align: center;
-
     padding: 11px;
-
     border: 1px solid #2563eb;
     border-radius: 7px;
-
     color: #2563eb;
-
+    background: #ffffff;
     text-decoration: none;
-
     font-size: 14px;
     font-weight: 600;
+    transition: 0.2s ease;
 }
 
 .view-profile-btn:hover {
@@ -326,56 +265,65 @@ body {
     color: #ffffff;
 }
 
-
-/* =========================
-   EMPTY STATES
-========================= */
+/* EMPTY STATES */
 
 .search-empty,
 .no-results {
+    width: 100%;
     background: #ffffff;
-
     border: 1px solid #e5e7eb;
-
     border-radius: 12px;
-
     text-align: center;
-
     padding: 55px 25px;
 }
 
 .search-empty-icon,
 .no-results-icon {
     font-size: 40px;
-
     margin-bottom: 15px;
 }
 
 .search-empty h2,
 .no-results h2 {
     font-size: 20px;
-
     margin-bottom: 8px;
 }
 
 .search-empty p,
 .no-results p {
     color: #6b7280;
-
     font-size: 14px;
+    line-height: 1.5;
 }
 
+/* TABLET */
 
-/* =========================
-   MOBILE
-========================= */
+@media (max-width: 850px) {
+
+    .search-container {
+        max-width: 100%;
+        padding: 45px 22px 70px;
+    }
+
+    .users-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
 
 @media (max-width: 700px) {
 
-    .search-navbar {
-        height: 60px;
+    body {
+        width: 100%;
+        background: #f8fafc;
+        overflow-x: hidden;
+    }
 
-        padding: 0 18px;
+    .search-navbar {
+        width: 100%;
+        height: 60px;
+        padding: 0 15px;
     }
 
     .search-brand {
@@ -387,51 +335,230 @@ body {
     }
 
     .search-container {
-        padding:
-            35px 15px 50px;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 30px 10px 50px;
     }
 
+    /* HEADER */
+
     .search-header {
-        margin-bottom: 22px;
+        width: 100%;
+        margin-bottom: 25px;
     }
 
     .search-header h1 {
         font-size: 26px;
+        line-height: 1.3;
+        margin-bottom: 8px;
     }
 
     .search-header p {
         font-size: 14px;
         line-height: 1.5;
+        padding: 0 5px;
     }
+
+    /* SEARCH FORM */
 
     .search-form {
-        flex-direction: column;
-
-        margin-bottom: 30px;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 0 32px !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
     }
 
-    .search-form input,
+    .search-form input {
+        display: block !important;
+        flex: none !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: 58px !important;
+        min-height: 58px !important;
+        max-height: 58px !important;
+        padding: 0 18px !important;
+        margin: 0 !important;
+        border: 1px solid #d1d5db !important;
+        border-radius: 10px !important;
+        background: #ffffff !important;
+        color: #111827 !important;
+        font-size: 16px !important;
+        line-height: normal !important;
+        box-sizing: border-box !important;
+        outline: none !important;
+    }
+
+    .search-form input::placeholder {
+        color: #9ca3af;
+        opacity: 1;
+    }
+
+    .search-form input:focus {
+        border-color: #2563eb !important;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+    }
+
     .search-form button {
-        width: 100%;
+        display: block !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        height: 54px !important;
+        min-height: 54px !important;
+        max-height: 54px !important;
+        padding: 0 20px !important;
+        margin: 0 !important;
+        border: none !important;
+        border-radius: 10px !important;
+        font-size: 15px !important;
+        box-sizing: border-box !important;
     }
+
+    /* RESULT HEADING */
 
     .result-heading {
+        width: 100%;
         align-items: flex-start;
         flex-direction: column;
-
         gap: 6px;
+        margin-bottom: 18px;
     }
 
     .result-heading h2 {
         font-size: 18px;
+        line-height: 1.4;
+        word-break: break-word;
     }
 
+    .result-heading span {
+        font-size: 13px;
+    }
+
+    /* USERS */
+
     .users-grid {
+        width: 100%;
         grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .user-card {
+        width: 100%;
         padding: 18px;
+        border-radius: 10px;
     }
 
+    .user-top {
+        width: 100%;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .user-image,
+    .user-placeholder {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+    }
+
+    .user-info h3 {
+        font-size: 16px;
+    }
+
+    .user-info p {
+        font-size: 13px;
+    }
+
+    /* SKILLS */
+
+    .skills {
+        width: 100%;
+        gap: 6px;
+        margin-bottom: 18px;
+    }
+
+    .skills span {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+
+    /* PROFILE BUTTON */
+
+    .view-profile-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    /* EMPTY */
+
+    .search-empty,
+    .no-results {
+        width: 100%;
+        padding: 45px 18px;
+        border-radius: 10px;
+    }
+
+    .search-empty-icon,
+    .no-results-icon {
+        font-size: 36px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+
+    .search-navbar {
+        padding: 0 12px;
+    }
+
+    .search-brand {
+        font-size: 19px;
+    }
+
+    .back-btn {
+        font-size: 12px;
+    }
+
+    .search-container {
+        padding: 25px 8px 45px;
+    }
+
+    .search-header h1 {
+        font-size: 24px;
+    }
+
+    .search-header p {
+        font-size: 13px;
+    }
+
+    .search-form {
+        gap: 10px !important;
+    }
+
+    .search-form input {
+        height: 56px !important;
+        min-height: 56px !important;
+        max-height: 56px !important;
+        font-size: 15px !important;
+        padding: 0 15px !important;
+    }
+
+    .search-form button {
+        height: 52px !important;
+        min-height: 52px !important;
+        max-height: 52px !important;
+        font-size: 14px !important;
+    }
+
+    .user-card {
+        padding: 16px;
+    }
 }

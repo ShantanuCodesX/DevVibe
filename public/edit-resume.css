@@ -8,20 +8,21 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f8fafc;
     color: #111827;
+    min-height: 100vh;
 }
 
 .resume-navbar {
+    width: 100%;
     height: 72px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 45px;
-
     background: #ffffff;
-
     border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .brand {
@@ -31,19 +32,31 @@ body {
 }
 
 .resume-navbar a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 0 14px;
     text-decoration: none;
-    color: #4b5563;
+    color: #374151;
     font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    background: #ffffff;
 }
 
 .resume-navbar a:hover {
     color: #2563eb;
+    border-color: #2563eb;
 }
 
 .resume-container {
-    max-width: 850px;
-    margin: auto;
-    padding: 50px 25px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 25px 70px;
 }
 
 .resume-heading {
@@ -52,40 +65,42 @@ body {
 
 .resume-heading h1 {
     font-size: 34px;
+    line-height: 1.3;
     margin-bottom: 8px;
 }
 
 .resume-heading p {
     color: #6b7280;
+    font-size: 15px;
+    line-height: 1.5;
 }
 
 .resume-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 22px;
 }
 
 .resume-section {
+    width: 100%;
     background: #ffffff;
-
     border: 1px solid #e5e7eb;
-
     border-radius: 12px;
-
     padding: 28px;
 }
 
 .resume-section h2 {
     font-size: 21px;
+    line-height: 1.3;
     margin-bottom: 25px;
 }
 
 .form-group {
+    width: 100%;
     display: flex;
     flex-direction: column;
-
     gap: 8px;
-
     margin-bottom: 20px;
 }
 
@@ -96,32 +111,43 @@ body {
 .form-group label {
     font-size: 14px;
     font-weight: 600;
+    color: #374151;
 }
 
 .form-group input,
 .form-group textarea {
+    display: block;
     width: 100%;
-
-    padding: 13px 14px;
-
     border: 1px solid #d1d5db;
-
     border-radius: 7px;
-
+    background: #ffffff;
+    color: #111827;
     font-family: inherit;
-
-    outline: none;
-
     font-size: 14px;
+    outline: none;
+}
+
+.form-group input {
+    height: 48px;
+    padding: 0 14px;
 }
 
 .form-group textarea {
+    min-height: 130px;
+    padding: 13px 14px;
+    line-height: 1.5;
     resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9ca3af;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 .form-group small {
@@ -130,41 +156,37 @@ body {
 }
 
 .resume-actions {
+    width: 100%;
     display: flex;
-
     justify-content: flex-end;
-
+    align-items: center;
     gap: 12px;
 }
 
 .cancel-btn,
 .preview-btn {
-    padding: 13px 20px;
-
+    min-height: 46px;
+    padding: 0 20px;
     border-radius: 7px;
-
-    text-decoration: none;
-
+    font-family: inherit;
     font-size: 14px;
-
+    text-decoration: none;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cancel-btn {
     background: #ffffff;
-
     color: #374151;
-
     border: 1px solid #d1d5db;
 }
 
 .preview-btn {
     border: none;
-
     background: #2563eb;
-
     color: #ffffff;
-
     font-weight: 600;
 }
 
@@ -172,27 +194,154 @@ body {
     background: #1d4ed8;
 }
 
-@media (max-width: 600px) {
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
 
     .resume-navbar {
-        padding: 0 20px;
+        width: 100%;
+        height: 60px;
+        padding: 0 10px;
+    }
+
+    .brand {
+        font-size: 21px;
+    }
+
+    .resume-navbar a {
+        min-height: 36px;
+        padding: 0 10px;
+        font-size: 13px;
     }
 
     .resume-container {
-        padding: 30px 15px;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 25px 5px 45px;
+    }
+
+    .resume-heading {
+        width: 100%;
+        padding: 0 8px;
+        margin-bottom: 22px;
+    }
+
+    .resume-heading h1 {
+        font-size: 27px;
+        margin-bottom: 7px;
+    }
+
+    .resume-heading p {
+        font-size: 14px;
+    }
+
+    .resume-form {
+        width: 100%;
+        gap: 12px;
     }
 
     .resume-section {
-        padding: 20px;
+        width: 100%;
+        margin: 0;
+        padding: 20px 14px;
+        border-radius: 8px;
+    }
+
+    .resume-section h2 {
+        font-size: 19px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        width: 100%;
+        margin-bottom: 17px;
+    }
+
+    .form-group input {
+        width: 100%;
+        height: 54px;
+        padding: 0 14px;
+        font-size: 15px;
+        border-radius: 8px;
+    }
+
+    .form-group textarea {
+        width: 100%;
+        min-height: 145px;
+        padding: 13px 14px;
+        font-size: 15px;
+        border-radius: 8px;
+    }
+
+    .form-group label {
+        font-size: 14px;
     }
 
     .resume-actions {
+        width: 100%;
         flex-direction: column;
+        gap: 9px;
+        padding: 0 2px;
     }
 
     .cancel-btn,
     .preview-btn {
-        text-align: center;
         width: 100%;
+        min-height: 53px;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+
+    .resume-navbar {
+        padding: 0 8px;
+    }
+
+    .brand {
+        font-size: 19px;
+    }
+
+    .resume-navbar a {
+        padding: 0 9px;
+        font-size: 12px;
+    }
+
+    .resume-container {
+        padding: 22px 3px 40px;
+    }
+
+    .resume-heading {
+        padding: 0 7px;
+    }
+
+    .resume-heading h1 {
+        font-size: 25px;
+    }
+
+    .resume-section {
+        padding: 18px 12px;
+        border-radius: 7px;
+    }
+
+    .resume-section h2 {
+        font-size: 18px;
+    }
+
+    .form-group input {
+        height: 52px;
+    }
+
+    .form-group textarea {
+        min-height: 135px;
     }
 }

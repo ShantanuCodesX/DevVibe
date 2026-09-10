@@ -11,17 +11,87 @@
 <body>
 
 <nav class="project-navbar">
-    <div class="brand">Devvibe</div>
 
-    <a href="/dashboard">
-        <i class="fa-solid fa-arrow-left"></i>
+    <a href="/dashboard" class="brand">
+        Devvibe
+    </a>
+
+    <a href="/profile/search" class="desktop-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Search developers...</span>
+    </a>
+
+    <a href="/dashboard" class="dashboard-link">
+        <i class="fa-solid fa-house"></i>
         Dashboard
     </a>
+
 </nav>
+
+<aside class="project-sidebar">
+
+    <div class="sidebar-menu">
+
+        <a href="/dashboard" class="menu-item">
+            <span class="menu-icon">
+                <i class="fa-solid fa-house"></i>
+            </span>
+            Home
+        </a>
+
+        <a href="/projects" class="menu-item active">
+            <span class="menu-icon">
+                <i class="fa-solid fa-file"></i>
+            </span>
+            Projects
+        </a>
+
+        <a href="/projects/add" class="menu-item">
+            <span class="menu-icon">
+                <i class="fa-solid fa-folder-plus"></i>
+            </span>
+            Add Project
+        </a>
+
+        <a href="/settings" class="menu-item">
+            <span class="menu-icon">
+                <i class="fa-solid fa-gear"></i>
+            </span>
+            Settings
+        </a>
+
+    </div>
+
+    <a href="/profile" class="sidebar-profile">
+
+        <% if (user.profileImage) { %>
+
+            <img
+                src="<%= user.profileImage %>"
+                alt="<%= user.name %>"
+                class="sidebar-profile-image"
+            >
+
+        <% } else { %>
+
+            <div class="sidebar-profile-placeholder">
+                <%= user.name.charAt(0).toUpperCase() %>
+            </div>
+
+        <% } %>
+
+        <span class="sidebar-profile-name">
+            <%= user.name %>
+        </span>
+
+    </a>
+
+</aside>
 
 <main class="project-container">
 
     <div class="page-heading project-heading">
+
         <div>
             <h1>Project Manager</h1>
             <p>Manage your proof of work.</p>
@@ -31,11 +101,13 @@
             <i class="fa-solid fa-plus"></i>
             Add New Project
         </a>
+
     </div>
 
     <% if (projects.length === 0) { %>
 
         <div class="empty-projects">
+
             <div class="empty-icon">
                 <i class="fa-regular fa-folder-open"></i>
             </div>
@@ -48,6 +120,7 @@
                 <i class="fa-solid fa-plus"></i>
                 Add Project
             </a>
+
         </div>
 
     <% } else { %>
@@ -86,9 +159,11 @@
                             </h2>
 
                             <% if (project.description) { %>
+
                                 <p class="project-description">
                                     <%= project.description %>
                                 </p>
+
                             <% } %>
 
                             <% if (project.techStack && project.techStack.length > 0) { %>
@@ -96,7 +171,11 @@
                                 <div class="tech-list">
 
                                     <% project.techStack.forEach(tech => { %>
-                                        <span><%= tech %></span>
+
+                                        <span>
+                                            <%= tech %>
+                                        </span>
+
                                     <% }) %>
 
                                 </div>
@@ -155,6 +234,7 @@
                                 action="/projects/delete/<%= project._id %>"
                                 method="POST"
                             >
+
                                 <button
                                     type="submit"
                                     class="delete-btn"
@@ -162,6 +242,7 @@
                                     <i class="fa-solid fa-trash"></i>
                                     Delete
                                 </button>
+
                             </form>
 
                         </div>
@@ -177,6 +258,56 @@
     <% } %>
 
 </main>
+
+<nav class="mobile-bottom-nav">
+
+    <a href="/dashboard" class="mobile-nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+    </a>
+
+    <a href="/projects" class="mobile-nav-item active">
+        <i class="fa-solid fa-file"></i>
+        <span>Projects</span>
+    </a>
+
+    <a href="/projects/add" class="mobile-nav-item add-nav-item">
+        <span class="add-icon">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+        <span>Add</span>
+    </a>
+
+    <a href="/profile/search" class="mobile-nav-item">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Search</span>
+    </a>
+
+    <a href="/profile" class="mobile-nav-item profile-nav-item">
+
+        <% if (user.profileImage) { %>
+
+            <img
+                src="<%= user.profileImage %>"
+                alt="<%= user.name %>"
+                class="mobile-profile-image"
+            >
+
+        <% } else { %>
+
+            <span class="mobile-profile-placeholder">
+                <%= user.name.charAt(0).toUpperCase() %>
+            </span>
+
+        <% } %>
+
+        <span class="mobile-profile-name">
+            <%= user.name %>
+        </span>
+
+    </a>
+
+</nav>
 
 </body>
 </html>

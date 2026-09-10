@@ -26,16 +26,18 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.set("trust proxy", 1);
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    rolling: true,
     store: MongoStore.create({
         mongoUrl: process.env.MONGO_URI,
-        ttl: 7 * 24 * 60 * 60
+        ttl: 30 * 24 * 60 * 60
     }),
     cookie: {
-        maxAge: 7 * 24 * 60 * 60 * 1000,
+        maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "lax"
