@@ -11,9 +11,14 @@ const showLogin = (req, res) => {
 const signup = async (req, res) => {
     try {
         const { name, email, password } = req.body;
-        const newUser = await authService.signupUser(name, email, password);
-        req.session.userId = newUser._id;
-        res.redirect("/dashboard");
+        const user = await authService.signupUser(name, email, password);
+
+        req.session.userId = user._id;
+
+        req.session.save((error) => {
+            if (error) return res.status(500).send("Session error");
+            res.redirect("/dashboard");
+        });
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -26,13 +31,8 @@ const login = async (req, res) => {
 
         req.session.userId = user._id;
 
-
         req.session.save((error) => {
-            if (error) {
-
-                return res.status(500).send("Session error");
-            }
-
+            if (error) return res.status(500).send("Session error");
             res.redirect("/dashboard");
         });
     } catch (error) {
@@ -46,4 +46,10 @@ const logout = (req, res) => {
     });
 };
 
-module.exports = { showSignup, showLogin, signup, login, logout };
+module.exports = {
+    showSignup,
+    showLogin,
+    signup,
+    login,
+    logout
+};

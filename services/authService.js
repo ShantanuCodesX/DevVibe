@@ -22,14 +22,11 @@ const loginUser = async (email, password) => {
         .select("_id password")
         .lean();
 
-   
-
     if (!user) {
         throw new Error("Invalid email or password");
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
-    console.log("Password match:", passwordMatch);
 
     if (!passwordMatch) {
         throw new Error("Invalid email or password");
@@ -38,4 +35,7 @@ const loginUser = async (email, password) => {
     return user;
 };
 
-module.exports = { signupUser, loginUser };
+module.exports = {
+    signupUser,
+    loginUser
+};
