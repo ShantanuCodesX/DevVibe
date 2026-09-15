@@ -17,7 +17,7 @@ const signup = async (req, res) => {
 
         req.session.save((error) => {
             if (error) return res.status(500).send("Session error");
-            res.redirect("/dashboard");
+            res.redirect("/profile");
         });
     } catch (error) {
         res.status(400).send(error.message);
