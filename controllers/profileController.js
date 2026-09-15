@@ -54,9 +54,12 @@ const showUserProfile = async (req, res) => {
             return res.status(404).send("Profile not found");
         }
 
+        const shared = req.query.shared === "1";
+
         res.render("userprofile", {
             user: data.user,
-            projects: data.projects
+            projects: data.projects,
+            shared
         });
     } catch (error) {
         res.status(500).send("Unable to load profile");

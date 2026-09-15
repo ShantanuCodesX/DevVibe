@@ -11,12 +11,24 @@
 <body>
 
 <nav class="profile-navbar">
-    <a href="/" class="brand">Devvibe</a>
+
+    <div class="profile-nav-left">
+
+        <a href="/dashboard" class="mobile-dashboard-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
+        <a href="/dashboard" class="brand">
+            Devvibe
+        </a>
+
+    </div>
 
     <button type="button" class="share-portfolio" onclick="sharePortfolio()">
         <i class="fa-solid fa-share-nodes"></i>
         <span>Share Portfolio</span>
     </button>
+
 </nav>
 
 <main class="profile-container">
@@ -90,28 +102,17 @@
                 <% } %>
             </div>
 
-            <div class="profile-actions">
-                <a href="/profile/edit" class="action-btn edit-profile-btn">
-                    <i class="fa-solid fa-pen"></i>
-                    Edit Profile
-                </a>
+         <div class="profile-actions">
+    <a href="/profile/edit" class="action-btn edit-profile-btn">
+        <i class="fa-solid fa-pen"></i>
+        Edit Profile
+    </a>
 
-                <a href="/resume" class="action-btn resume-btn">
-                    <i class="fa-solid fa-file-arrow-down"></i>
-                    Download Resume
-                </a>
-            </div>
-
-            <a href="/settings" class="settings-btn">
-                <i class="fa-solid fa-gear"></i>
-                <span>
-                    <strong>Settings</strong>
-                    <small>Manage your account and preferences</small>
-                </span>
-                <i class="fa-solid fa-chevron-right"></i>
-            </a>
-
-        </div>
+    <a href="/settings" class="action-btn settings-action-btn">
+        <i class="fa-solid fa-gear"></i>
+        Settings
+    </a>
+</div>
 
     </section>
 
@@ -205,7 +206,7 @@
 
 <script>
 async function sharePortfolio() {
-    const portfolioUrl = window.location.origin + "/profile/user/<%= user._id %>";
+    const portfolioUrl = window.location.origin + "/profile/user/<%= user._id %>?shared=1";
 
     if (navigator.share) {
         try {

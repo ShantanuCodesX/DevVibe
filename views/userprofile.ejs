@@ -12,6 +12,14 @@
 
 <nav class="userprofile-navbar">
     <div class="brand">Devvibe</div>
+
+    <% if (shared) { %>
+        <a href="/auth/signup" class="create-profile-btn">
+            <i class="fa-solid fa-user-plus"></i>
+            Create Your Profile
+        </a>
+    <%} %>
+
 </nav>
 
 <main class="userprofile-container">

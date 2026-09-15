@@ -2,77 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Signup - Devhub</title>
-
+    <title>Sign Up - Devvibe</title>
     <link rel="stylesheet" href="/auth.css">
 </head>
 
 <body>
 
-    <div class="auth-container">
+<main class="auth-page">
 
-        <div class="auth-card">
+    <section class="auth-intro">
+        <div class="brand-logo">Devvibe</div>
 
-            <h1>Create Account</h1>
+        <h1>Build. Showcase. Get Discovered.</h1>
 
-            <p>Build your developer portfolio with Devhub</p>
+        <div class="intro-points">
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <span>Showcase your real projects</span>
+            </div>
 
-            <form action="/auth/signup" method="POST">
+            <div>
+                <i class="fa-solid fa-user"></i>
+                <span>Create your professional developer profile</span>
+            </div>
 
-                <div class="form-group">
-                    <label>Name</label>
-
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Enter your name"
-                        required
-                    >
-                </div>
-
-
-                <div class="form-group">
-                    <label>Email</label>
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        required
-                    >
-                </div>
-
-
-                <div class="form-group">
-                    <label>Password</label>
-
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Create a password"
-                        required
-                    >
-                </div>
-
-
-                <button type="submit">
-                    Create Account
-                </button>
-
-            </form>
-
-
-            <p class="auth-link">
-                Already have an account?
-                <a href="/auth/login">Login</a>
-            </p>
-
+            <div>
+                <i class="fa-solid fa-link"></i>
+                <span>Share your portfolio with one link</span>
+            </div>
         </div>
+    </section>
 
-    </div>
+    <section class="auth-card">
+
+        <h2>Create an account</h2>
+
+        <p class="auth-description">
+            Create your Devvibe profile and start building your portfolio.
+        </p>
+
+        <form action="/auth/signup" method="POST">
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Enter Name"
+                    autocomplete="name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Create Password"
+                    autocomplete="new-password"
+                    required
+                >
+            </div>
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <p class="auth-link">
+            Already have an account?
+            <a href="/auth/login">Log in</a>
+        </p>
+
+    </section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
 
 </body>
 </html>

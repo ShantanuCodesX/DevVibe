@@ -43,7 +43,10 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-    res.render("index");
+    if (req.session.userId) {
+        return res.redirect("/dashboard");
+    }
+    res.redirect("/auth/signup");
 });
 
 app.use("/auth", authRoutes);

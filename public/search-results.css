@@ -9,6 +9,7 @@ body {
     background: #f8fafc;
     color: #111827;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* NAVBAR */
@@ -26,11 +27,26 @@ body {
     z-index: 10;
 }
 
+.search-nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .search-brand {
     color: #2563eb;
     font-size: 24px;
     font-weight: 700;
     text-decoration: none;
+}
+
+.mobile-back-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+    text-decoration: none;
+    font-size: 19px;
 }
 
 .back-btn {
@@ -89,9 +105,9 @@ body {
     width: 100%;
     height: 50px;
     padding: 0 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    background: #f0f2f5;
     color: #111827;
     font-size: 15px;
     outline: none;
@@ -102,6 +118,7 @@ body {
 }
 
 .search-form input:focus {
+    background: #ffffff;
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
@@ -110,7 +127,7 @@ body {
     height: 50px;
     padding: 0 25px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     background: #2563eb;
     color: #ffffff;
     font-size: 15px;
@@ -158,9 +175,7 @@ body {
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     padding: 22px;
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .user-card:hover {
@@ -299,7 +314,6 @@ body {
 /* TABLET */
 
 @media (max-width: 850px) {
-
     .search-container {
         max-width: 100%;
         padding: 45px 22px 70px;
@@ -313,7 +327,6 @@ body {
 /* MOBILE */
 
 @media (max-width: 700px) {
-
     body {
         width: 100%;
         background: #f8fafc;
@@ -326,12 +339,24 @@ body {
         padding: 0 15px;
     }
 
-    .search-brand {
-        font-size: 21px;
+    .search-nav-left {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .mobile-back-btn {
+        display: flex;
+        width: 30px;
+        height: 30px;
     }
 
     .back-btn {
-        font-size: 13px;
+        display: none;
+    }
+
+    .search-brand {
+        font-size: 21px;
     }
 
     .search-container {
@@ -384,9 +409,9 @@ body {
         max-height: 58px !important;
         padding: 0 18px !important;
         margin: 0 !important;
-        border: 1px solid #d1d5db !important;
+        border: 1px solid #d9d9d9 !important;
         border-radius: 10px !important;
-        background: #ffffff !important;
+        background: #f0f2f5 !important;
         color: #111827 !important;
         font-size: 16px !important;
         line-height: normal !important;
@@ -400,6 +425,7 @@ body {
     }
 
     .search-form input:focus {
+        background: #ffffff !important;
         border-color: #2563eb !important;
         box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
     }
@@ -514,17 +540,22 @@ body {
 /* SMALL MOBILE */
 
 @media (max-width: 380px) {
-
     .search-navbar {
         padding: 0 12px;
     }
 
-    .search-brand {
-        font-size: 19px;
+    .search-nav-left {
+        gap: 7px;
     }
 
-    .back-btn {
-        font-size: 12px;
+    .mobile-back-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+
+    .search-brand {
+        font-size: 19px;
     }
 
     .search-container {
